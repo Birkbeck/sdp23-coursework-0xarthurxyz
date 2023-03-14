@@ -25,6 +25,7 @@ public final class Machine {
 	// of the next instruction to be executed.
 	private int programCounter = 0;
 
+	// Constructor
 	public Machine(Registers registers) {
 		this.registers = registers;
 	}
