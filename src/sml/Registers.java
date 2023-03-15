@@ -10,8 +10,13 @@ import java.util.stream.Collectors;
  * @author ...
  */
 public final class Registers {
+    /**
+     * The registers of the machine, which represent the memory locations 
+     * that can be written to and read from to perform the instructions
+     * supported by the machine.
+     */
     private final Map<Register, Integer> registers = new HashMap<>();
-
+    
     public enum Register implements RegisterName {
         EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI;
     }
