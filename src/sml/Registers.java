@@ -6,7 +6,12 @@ import java.util.stream.Collectors;
 // TODO: write a JavaDoc for the class
 
 /**
- *
+ * 
+ * This class is:
+ * 
+ * <li> {@code public}, which means it is accessible by any other class
+ * <li> {@code final}, which means it cannot be inherited by other classes
+ * 
  * @author Arthur Gousset
  */
 public final class Registers {
@@ -20,8 +25,8 @@ public final class Registers {
      * 
      * <p> This field is:
      * <ul>
-     * <li> {@code private} meaning it is only accessible in this class
-     * <li> {@code final} meaning it cannot be overridden/modified
+     * <li> {@code private}, which means it is only accessible in this class
+     * <li> {@code final}, which means it cannot be overridden/modified
      * </ul>
      */
     private final Map<Register, Integer> registers = new HashMap<>();
@@ -33,7 +38,25 @@ public final class Registers {
      * read from in the machine.
      */
     public enum Register implements RegisterName {
-        EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI;
+        EAX {
+            public String name() {
+                return "EAX";
+            }
+        },
+        
+        EBX, 
+        
+        ECX, 
+        
+        EDX, 
+        
+        ESP, 
+        
+        EBP, 
+        
+        ESI, 
+        
+        EDI;
     }
 
     /**
