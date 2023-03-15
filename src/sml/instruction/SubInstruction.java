@@ -49,4 +49,20 @@ public class SubInstruction extends Instruction {
 	public String toString() {
 		return getLabelString() + getOpcode() + " " + result + " " + source;
 	}
+
+	// My TODO: Add javadoc
+	// My TODO: Implement equals method
+	@Override
+	public boolean equals(Object o) {
+		// temporary implementation to stop compilation errors
+		return false;
+	}
+	
+	// My TODO: Add javadoc
+	// My TODO: Implement and override hashCode method
+	@Override
+	public int hashCode() {
+		// temporary implementation to stop compilation errors
+		return 0;
+	}
 }
