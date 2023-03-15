@@ -12,7 +12,12 @@ public abstract class Instruction {
 	protected final String opcode;
 	public static int NORMAL_PROGRAM_COUNTER_UPDATE = -1;
 
-	// My TODO: Consider using an ENUM for the operations that are supported
+	// My TODO: Consider using an ENUM for the operations `opcode` that are supported
+	protected enum Opcodes implements OpcodeName {
+		// Currently unused
+        ADD, SUB, MUL, DIV, OUT, MOV, JNZ;
+    }
+
 	// My TODO: Consider adding names of 8 registers that are supported
 
 	/**
