@@ -68,4 +68,9 @@ public class AddInstruction extends Instruction {
 	
 	// My TODO: Add javadoc
 	// My TODO: Implement and override hashCode method
+	@Override
+	public int hashCode() {
+		// temporary implementation to stop compilation errors
+		return 0;
+	}
 }
