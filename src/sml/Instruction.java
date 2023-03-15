@@ -49,12 +49,17 @@ public abstract class Instruction {
 	}
 
 	/**
+	 * Produces a formatted String representation of the given object.
+	 * 
 	 * This is an abstract method, which means it does not have a method body defined in this
 	 * abstract class. Instead the method body is defined in each respective subclass that 
 	 * extends this abstract class.
+	 * 
+	 * @return 	Nicely formatted String representation of the object.
 	 */
 	@Override
 	public abstract String toString();
 
 	// TODO: Make sure that subclasses also implement equals and hashCode (needed in class Machine).
+	
 }
