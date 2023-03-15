@@ -13,6 +13,7 @@ import static sml.Instruction.NORMAL_PROGRAM_COUNTER_UPDATE;
  * An instance contains 32 registers and methods to access and change them.
  *
  */
+// My TODO: Consider changing this to "8"
 public final class Machine {
 
 	private final Labels labels = new Labels();
