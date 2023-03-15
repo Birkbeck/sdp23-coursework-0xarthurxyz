@@ -16,10 +16,17 @@ public final class Registers {
         EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI;
     }
 
+    /**
+     * Constructor: produces a mapping from every element of 
+     * the {@code Register} enumeration to the integer 0.
+     * 
+     * @return  mapping from every {@code Register} element to 
+     *          the integer 0.
+     */
     public Registers() {
         clear(); // the class is final
     }
-
+    
     public void clear() {
         for (Register register : Register.values())
             registers.put(register, 0);
