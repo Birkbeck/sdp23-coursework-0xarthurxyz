@@ -68,14 +68,13 @@ public abstract class Instruction {
 	 * extends this abstract class.
 	 * 
 	 * @param   o   the reference object to compare
-     * @return  {@code true} if this object is the same as the {@code o}
-     *          argument; {@code false} otherwise.
+	 * @return	{@code true} if this object is the same as the {@code o} argument, {@code false}
+	 * 			otherwise.
 	 */
 	@Override
 	public abstract boolean equals(Object o);
 
 	/**
-	 * 
 	 * Returns a hash code value for this object.
 	 * 
 	 * This is an abstract method, which means it does not have a method body defined in this
