@@ -29,6 +29,17 @@ public class AddInstruction extends Instruction {
 		this.source = source;
 	}
 
+	/** 
+	 * Performs a state transition on a given machine.
+	 * 
+	 * <p> Adds the value of a register to the value of another register and stores the result
+	 * in a register.
+	 * 
+	 * @param m	Machine object with a given set of registers 
+	 * @return 	the new program counter (for jump instructions)
+	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 * 			the instruction with the next address is to be executed
+	 */
 	@Override
 	public int execute(Machine m) {
 		int value1 = m.getRegisters().get(result);
