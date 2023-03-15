@@ -19,6 +19,8 @@ public abstract class Instruction {
 	 * @param label optional label (can be null)
 	 * @param opcode operation name
 	 */
+	// My TODO: Consider using an ENUM for the operations that are supported
+	// My TODO: Consider running string validation to confirm label is legal
 	public Instruction(String label, String opcode) {
 		this.label = label;
 		this.opcode = opcode;
