@@ -16,6 +16,13 @@ public class AddInstruction extends Instruction {
 
 	public static final String OP_CODE = "add";
 
+	/**
+	 * Constructor: 
+	 * 
+	 * @param label
+	 * @param result
+	 * @param source
+	 */
 	public AddInstruction(String label, RegisterName result, RegisterName source) {
 		super(label, OP_CODE);
 		this.result = result;
