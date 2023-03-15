@@ -1,6 +1,7 @@
 package sml.instruction;
 
 import sml.Instruction;
+import sml.Machine;
 import sml.RegisterName;
 
 public class SubInstruction extends Instruction {
@@ -22,6 +23,25 @@ public class SubInstruction extends Instruction {
 		super(label, OP_CODE);
 		this.result = result;
 		this.source = source;
+	}
+
+	/** 
+	 * Performs a state transition on a given machine.
+	 * 
+	 * <p> Subtracts the value of a register from the value of another register 
+	 * and stores that result in a register.
+	 * 
+	 * @param m	Machine object with a given set of registers 
+	 * @return 	the new program counter (for jump instructions)
+	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 * 			the instruction with the next address is to be executed
+	 */
+	@Override
+	public int execute(Machine m) {
+		int value1 = m.getRegisters().get(result);
+		int value2 = m.getRegisters().get(source);
+		m.getRegisters().set(result, value1 - value2);
+		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
     
 }
