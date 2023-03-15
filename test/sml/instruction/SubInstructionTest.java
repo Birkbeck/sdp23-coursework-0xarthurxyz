@@ -33,7 +33,7 @@ class SubInstructionTest {
     }
 
     @Test
-    void executeValid() {
+    void givenSimpleValues_whenSubtracting_thenResultIsCorrect() {
         registers.set(EAX, 6);
         registers.set(EBX, 5);
         Instruction instruction = new SubInstruction(null, EAX, EBX);
