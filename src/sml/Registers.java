@@ -38,25 +38,7 @@ public final class Registers {
      * read from in the machine.
      */
     public enum Register implements RegisterName {
-        EAX {
-            public String name() {
-                return "EAX";
-            }
-        },
-        
-        EBX, 
-        
-        ECX, 
-        
-        EDX, 
-        
-        ESP, 
-        
-        EBP, 
-        
-        ESI, 
-        
-        EDI;
+        EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI;
     }
 
     /**
