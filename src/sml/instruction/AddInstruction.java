@@ -11,9 +11,11 @@ import sml.RegisterName;
  */
 
 public class AddInstruction extends Instruction {
+	// My TODO: Add javadoc
 	private final RegisterName result;
+	// My TODO: Add javadoc
 	private final RegisterName source;
-
+	// My TODO: Add javadoc
 	public static final String OP_CODE = "add";
 
 	/**
@@ -34,7 +36,7 @@ public class AddInstruction extends Instruction {
 	/** 
 	 * Performs a state transition on a given machine.
 	 * 
-	 * <p> Adds the value of a register to the value of another register and stores the result
+	 * <p> Adds the value of a register to the value of another register and stores that result
 	 * in a register.
 	 * 
 	 * @param m	Machine object with a given set of registers 
@@ -50,8 +52,15 @@ public class AddInstruction extends Instruction {
 		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
 
+	// My TODO: Add javadoc
 	@Override
 	public String toString() {
 		return getLabelString() + getOpcode() + " " + result + " " + source;
 	}
+	
+	// My TODO: Add javadoc
+	// My TODO: Implement equals method
+	
+	// My TODO: Add javadoc
+	// My TODO: Implement and override hashCode method
 }
