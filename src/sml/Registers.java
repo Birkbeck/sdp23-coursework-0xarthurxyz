@@ -49,7 +49,7 @@ public final class Registers {
     
     // My TODO: Consider using Java streams API instead of for-loop
     /**
-     * Helper method: resets all registers by setting every 
+     * Resets all registers by setting every 
      * mapping from an element of the {@code Register} enumeration to the integer 0
      */
     public void clear() {
