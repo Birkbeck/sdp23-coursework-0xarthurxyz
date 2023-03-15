@@ -49,7 +49,7 @@ public abstract class Instruction {
 	}
 
 	/**
-	 * Produces a formatted String representation of the given object.
+	 * Returns a formatted String representation of the given object.
 	 * 
 	 * This is an abstract method, which means it does not have a method body defined in this
 	 * abstract class. Instead the method body is defined in each respective subclass that 
@@ -61,5 +61,19 @@ public abstract class Instruction {
 	public abstract String toString();
 
 	// TODO: Make sure that subclasses also implement equals and hashCode (needed in class Machine).
+
+	/**
+	 * Evaluates whether some other object is "equal to" this one.
+	 * 
+	 * This is an abstract method, which means it does not have a method body defined in this
+	 * abstract class. Instead the method body is defined in each respective subclass that 
+	 * extends this abstract class.
+	 * 
+	 * @param   o   the reference object to compare
+     * @return  {@code true} if this object is the same as the {@code o}
+     *          argument; {@code false} otherwise.
+	 */
+	@Override
+	public abstract boolean equals(Object o);
 	
 }
