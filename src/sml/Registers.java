@@ -31,6 +31,7 @@ public final class Registers {
      * Helper method: resets all registers by setting every 
      * mapping from an element of the {@code Register} enumeration to the integer 0
      */
+    // My TODO: Consider using Java streams API instead of for-loop
     public void clear() {
         for (Register register : Register.values())
             registers.put(register, 0);
