@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 /**
  * 
  * This class is:
- * 
+ * <ul>
  * <li> {@code public}, which means it is accessible by any other class
  * <li> {@code final}, which means it cannot be inherited by other classes
- * 
+ * </ul>
  * @author Arthur Gousset
  */
 public final class Registers {
