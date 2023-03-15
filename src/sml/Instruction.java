@@ -23,10 +23,12 @@ public abstract class Instruction {
 		this.opcode = opcode;
 	}
 
+	// My todo: add javadoc
 	public String getLabel() {
 		return label;
 	}
 
+	// My todo: add javadoc
 	public String getOpcode() {
 		return opcode;
 	}
@@ -41,7 +43,6 @@ public abstract class Instruction {
 	 *          or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
 	 *          the instruction with the next address is to be executed
 	 */
-
 	public abstract int execute(Machine machine);
 
 
