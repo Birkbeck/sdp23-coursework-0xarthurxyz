@@ -43,5 +43,10 @@ public class SubInstruction extends Instruction {
 		m.getRegisters().set(result, value1 - value2);
 		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
-    
+
+	// My TODO: Add javadoc
+	@Override
+	public String toString() {
+		return getLabelString() + getOpcode() + " " + result + " " + source;
+	}
 }
