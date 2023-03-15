@@ -27,6 +27,10 @@ public final class Registers {
         clear(); // the class is final
     }
     
+    /**
+     * Helper method: resets all registers by setting every 
+     * mapping from an element of the {@code Register} enumeration to the integer 0
+     */
     public void clear() {
         for (Register register : Register.values())
             registers.put(register, 0);
