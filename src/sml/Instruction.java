@@ -10,6 +10,7 @@ package sml;
 public abstract class Instruction {
 	protected final String label;
 	protected final String opcode;
+	public static int NORMAL_PROGRAM_COUNTER_UPDATE = -1;
 
 	/**
 	 * Constructor: an instruction with a label and an opcode
@@ -32,8 +33,6 @@ public abstract class Instruction {
 	public String getOpcode() {
 		return opcode;
 	}
-
-	public static int NORMAL_PROGRAM_COUNTER_UPDATE = -1;
 
 	/**
 	 * Executes the instruction in the given machine.
