@@ -60,7 +60,10 @@ public abstract class Instruction {
 	@Override
 	public abstract String toString();
 
-	// TODO: Make sure that subclasses also implement equals and hashCode (needed in class Machine).
+	// -[x] TODO: Make sure that subclasses also implement equals and hashCode (needed in class Machine).
+	// Subclass have to implement equals and hashCode because the methods are defined as
+	// abstract methods in this class. This means the subclasses have to implement the method
+	// body.
 
 	/**
 	 * Evaluates whether some other object is "equal to" this one.
