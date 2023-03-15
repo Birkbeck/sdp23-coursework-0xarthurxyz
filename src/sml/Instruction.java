@@ -34,6 +34,11 @@ public abstract class Instruction {
 		return opcode;
 	}
 
+	// My TODO: Add javadoc
+	protected String getLabelString() {
+		return (getLabel() == null) ? "" : getLabel() + ": ";
+	}
+
 	/**
 	 * Executes the instruction in the given machine.
 	 *
@@ -43,12 +48,6 @@ public abstract class Instruction {
 	 *          the instruction with the next address is to be executed
 	 */
 	public abstract int execute(Machine machine);
-
-
-	// My TODO: Add javadoc
-	protected String getLabelString() {
-		return (getLabel() == null) ? "" : getLabel() + ": ";
-	}
 
 	/**
 	 * Returns a formatted String representation of the given object.
