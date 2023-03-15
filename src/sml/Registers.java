@@ -20,6 +20,10 @@ public final class Registers {
      */
     private final Map<Register, Integer> registers = new HashMap<>();
     
+    /**
+     * An enumeration of the register names available to be written to and
+     * read from in the machine.
+     */
     public enum Register implements RegisterName {
         EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI;
     }
