@@ -10,11 +10,13 @@ public class SubInstruction extends Instruction {
 	public static final String OP_CODE = "sub";
 
 	/**
-	 * Constructor: 
+	 * Constructor: Instantiates a subtraction instruction given two register names.
 	 * 
-	 * @param label
-	 * @param result
-	 * @param source
+	 * @param label		optional name given to this instruction; label name can be used to jump to
+	 * 					this instruction from other instructions.
+	 * @param result	name of the register in which the result of the addition will be stored;
+	 * 					also name of the register whose value will be used in the addition.
+	 * @param source	name of the register whose value will be used in the addition.
 	 */
 	public SubInstruction(String label, RegisterName result, RegisterName source) {
 		super(label, OP_CODE);
