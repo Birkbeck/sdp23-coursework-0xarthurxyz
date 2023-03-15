@@ -14,6 +14,9 @@ public final class Registers {
      * The registers of the machine, which represent the memory locations 
      * that can be written to and read from to perform the instructions
      * supported by the machine.
+     * 
+     * <p> The registers are implemented as a mapping from an element of 
+     * the {@code Register} enumeration to an {@code Integer}.
      */
     private final Map<Register, Integer> registers = new HashMap<>();
     
