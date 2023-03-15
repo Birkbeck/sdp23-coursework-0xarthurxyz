@@ -24,6 +24,8 @@ public final class Registers {
      * An enumeration of the register names available to be written to and
      * read from in the machine.
      */
+    // My TODO: check I don't need to implement the `name()` method of
+    // the RegisterName interface implemented by Register.
     public enum Register implements RegisterName {
         EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI;
     }
