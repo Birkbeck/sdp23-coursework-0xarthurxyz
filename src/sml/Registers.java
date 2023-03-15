@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author ...
+ * @author Arthur Gousset
  */
 public final class Registers {
     /**
@@ -26,12 +26,12 @@ public final class Registers {
      */
     private final Map<Register, Integer> registers = new HashMap<>();
     
+    // My TODO: check I don't need to implement the `name()` method of
+    // the RegisterName interface implemented by Register.
     /**
      * An enumeration of the register names available to be written to and
      * read from in the machine.
      */
-    // My TODO: check I don't need to implement the `name()` method of
-    // the RegisterName interface implemented by Register.
     public enum Register implements RegisterName {
         EAX, EBX, ECX, EDX, ESP, EBP, ESI, EDI;
     }
@@ -47,11 +47,11 @@ public final class Registers {
         clear(); // the class is final
     }
     
+    // My TODO: Consider using Java streams API instead of for-loop
     /**
      * Helper method: resets all registers by setting every 
      * mapping from an element of the {@code Register} enumeration to the integer 0
      */
-    // My TODO: Consider using Java streams API instead of for-loop
     public void clear() {
         for (Register register : Register.values())
             registers.put(register, 0);
