@@ -76,6 +76,16 @@ public abstract class Instruction {
 	@Override
 	public abstract boolean equals(Object o);
 
+	/**
+	 * 
+	 * Returns a hash code value for this object.
+	 * 
+	 * This is an abstract method, which means it does not have a method body defined in this
+	 * abstract class. Instead the method body is defined in each respective subclass that 
+	 * extends this abstract class.
+	 * 
+	 * @return	a hash code value for this object.
+	 */
 	@Override
 	public abstract int hashCode();
 }
