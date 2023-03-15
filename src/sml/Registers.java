@@ -17,6 +17,12 @@ public final class Registers {
      * 
      * <p> The registers are implemented as a mapping from an element of 
      * the {@code Register} enumeration to an {@code Integer}.
+     * 
+     * <p> This field is:
+     * <ul>
+     * <li> {@code private} meaning it is only accessible in this class
+     * <li> {@code final} meaning it cannot be overridden/modified
+     * </ul>
      */
     private final Map<Register, Integer> registers = new HashMap<>();
     
