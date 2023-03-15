@@ -44,6 +44,8 @@ public abstract class Instruction {
 
 	public abstract int execute(Machine machine);
 
+
+	// My TODO: Add javadoc
 	protected String getLabelString() {
 		return (getLabel() == null) ? "" : getLabel() + ": ";
 	}
