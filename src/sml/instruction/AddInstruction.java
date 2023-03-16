@@ -9,7 +9,6 @@ import sml.RegisterName;
 /**
  * @author
  */
-
 public class AddInstruction extends Instruction {
 	// My TODO: Add javadoc
 	private final RegisterName result;
