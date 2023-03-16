@@ -25,6 +25,10 @@ public final class Translator {
     private final String fileName; // source file of SML code
 
     // line contains the characters in the current line that's not been processed yet
+    /**
+     * String representing the next line of the plaintext file
+     * that will be processed next.
+     */
     private String line = "";
 
     public Translator(String fileName) {
