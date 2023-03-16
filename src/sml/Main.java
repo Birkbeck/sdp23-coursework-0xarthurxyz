@@ -46,7 +46,7 @@ public class Main {
 			//
 			// My TODO: Remove my personal instructions below
 			//
-			Translator t = new Translator("test3.sml");
+			Translator t = new Translator("test2.sml");
 			Machine m = new Machine(new Registers());
 			t.readAndTranslate(m.getLabels(), m.getProgram());
 
