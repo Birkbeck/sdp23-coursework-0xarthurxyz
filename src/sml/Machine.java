@@ -14,11 +14,11 @@ import static sml.Instruction.NORMAL_PROGRAM_COUNTER_UPDATE;
  *
  */
 public final class Machine {
-
+	// My TODO: add javadoc
 	private final Labels labels = new Labels();
-
+	// My TODO: add javadoc
 	private final List<Instruction> program = new ArrayList<>();
-
+	// My TODO: add javadoc
 	private final Registers registers;
 
 	// The program counter; it contains the index (in program)
@@ -30,6 +30,7 @@ public final class Machine {
 		this.registers = registers;
 	}
 
+	// My TODO: add better javadoc
 	/**
 	 * Execute the program in program, beginning at instruction 0.
 	 * Precondition: the program and its labels have been stored properly.
@@ -46,14 +47,17 @@ public final class Machine {
 		}
 	}
 
+	// My TODO: add javadoc
 	public Labels getLabels() {
 		return this.labels;
 	}
 
+	// My TODO: add javadoc
 	public List<Instruction> getProgram() {
 		return this.program;
 	}
 
+	// My TODO: add javadoc
 	public Registers getRegisters() {
 		return this.registers;
 	}
