@@ -81,4 +81,26 @@ class OutInstructionTest {
     // Then removes the new line that is added by `System.out.println()`
     Assertions.assertEquals( "-5", output.toString().trim());
   }
+
+  @Test
+  void givenEquivalentInstructions_whenComparing_thenTrue() {
+    registers.set(EAX, -5);
+    // Instantiates first instruction
+    Instruction firstInstruction = new OutInstruction(null, EAX);
+    // Instantiates second instruction
+    Instruction SecondInstruction = new OutInstruction(null, EAX);
+    // Compares equivalent instructions
+    Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
+  }
+
+  @Test
+  void givenEquivalentInstructions_whenHashCodes_thenEquivalent() {
+    registers.set(EAX, -5);
+    // Instantiates first instruction
+    Instruction firstInstruction = new OutInstruction(null, EAX);
+    // Instantiates second instruction
+    Instruction SecondInstruction = new OutInstruction(null, EAX);
+    // Compares equivalent instructions
+    Assertions.assertEquals(firstInstruction.hashCode(), SecondInstruction.hashCode());
+  }
 }
