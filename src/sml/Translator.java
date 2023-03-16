@@ -27,6 +27,7 @@ public final class Translator {
      */
     private final String fileName; // source file of SML code
 
+    // My TODO: consider removing comment below
     // line contains the characters in the current line that's not been processed yet
     /**
      * String representing the characters in the current line of the plaintext file
