@@ -191,6 +191,11 @@ public final class Translator {
             }
 
             // My TODO: JnzInstruction
+            case JnzInstruction.OP_CODE -> {
+              String s = scan();
+              String L = scan();
+              return new JnzInstruction(label, Register.valueOf(s), L);
+            }
 
             // TODO: Then, replace the switch by using the Reflection API
 
