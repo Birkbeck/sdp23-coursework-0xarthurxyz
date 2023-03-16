@@ -18,44 +18,42 @@ public class Main {
 		// My TODO: Uncomment offifical instructions below:
 		//
 
-		// if (args.length != 1) {
-		// 	System.err.println("Incorrect number of arguments - Machine <file> - required");
-		// 	System.exit(-1);
-		// }
+		if (args.length != 1) {
+			System.err.println("Incorrect number of arguments - Machine <file> - required");
+			System.exit(-1);
+		}
 
 		try {
 			//
 			// My TODO: Uncomment offifical instructions below:
 			//
 
-			// Translator t = new Translator(args[0]);
-			// Translator t = new Translator(args[0]);
-			// Machine m = new Machine(new Registers());
-			// t.readAndTranslate(m.getLabels(), m.getProgram());
-
-			// My TODO: Uncomment official instructions
-			// System.out.println("Here is the program; it has " + m.getProgram().size() + " instructions.");
-			// System.out.println(m);
-
-			// System.out.println("Beginning program execution.");
-			// m.execute();
-			// System.out.println("Ending program execution.");
-
-			// System.out.println("Values of registers at program termination:" + m.getRegisters() + ".");
-
-			//
-			// My TODO: Remove my personal instructions below
-			//
-			Translator t = new Translator("test1.sml");
+			Translator t = new Translator(args[0]);
 			Machine m = new Machine(new Registers());
 			t.readAndTranslate(m.getLabels(), m.getProgram());
 
-
 			System.out.println("Here is the program; it has " + m.getProgram().size() + " instructions.");
+			System.out.println(m);
 
 			System.out.println("Beginning program execution.");
 			m.execute();
 			System.out.println("Ending program execution.");
+
+			System.out.println("Values of registers at program termination:" + m.getRegisters() + ".");
+
+			//
+			// My TODO: Remove my personal instructions below
+			//
+			// Translator t = new Translator("test1.sml");
+			// Machine m = new Machine(new Registers());
+			// t.readAndTranslate(m.getLabels(), m.getProgram());
+
+
+			// System.out.println("Here is the program; it has " + m.getProgram().size() + " instructions.");
+
+			// System.out.println("Beginning program execution.");
+			// m.execute();
+			// System.out.println("Ending program execution.");
 
 		}
 		catch (IOException e) {
