@@ -16,7 +16,7 @@ public class MovInstruction extends Instruction {
     // My TODO: Add javadoc
 	public static final String OP_CODE = "mov";
 
-    /**
+  /**
 	 * Constructor: Instantiates a move instruction given a register name and an integer value.
 	 * 
 	 * @param label		optional name given to this instruction; label name can be used to jump to 
