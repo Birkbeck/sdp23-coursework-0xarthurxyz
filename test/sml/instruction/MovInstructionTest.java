@@ -11,7 +11,7 @@ import sml.Registers;
 
 import static sml.Registers.Register.*;
 
-public class MovInstructionTest {
+class MovInstructionTest {
   private Machine machine;
 
   @BeforeEach

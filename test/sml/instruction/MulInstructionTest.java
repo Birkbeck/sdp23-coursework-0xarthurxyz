@@ -11,7 +11,7 @@ import sml.Registers;
 
 import static sml.Registers.Register.*;
 
-public class MulInstructionTest {
+class MulInstructionTest {
   private Machine machine;
   private Registers registers;
 
