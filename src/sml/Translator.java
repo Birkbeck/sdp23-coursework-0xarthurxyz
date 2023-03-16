@@ -126,6 +126,9 @@ public final class Translator {
                     program.add(instruction);
                 }
             }
+        } catch (Exception e) {
+          // My TODO: Add better error handling than stack trace
+          e.printStackTrace();
         }
     }
 
