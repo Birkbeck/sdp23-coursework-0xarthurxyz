@@ -2,11 +2,6 @@ package sml;
 
 import java.io.IOException;
 
-//
-// My TODO: Remove unofficial imports below
-//
-import static sml.Registers.Register.*;
-
 public class Main {
 	/**
 	 * Initialises the system and executes the program.
