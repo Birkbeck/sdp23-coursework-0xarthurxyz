@@ -1,5 +1,5 @@
-package sml.instruction;
+// package sml.instruction;
 
-public class JnzInstruction extends Instruction {
+// public class JnzInstruction extends Instruction {
   
-}
+// }
