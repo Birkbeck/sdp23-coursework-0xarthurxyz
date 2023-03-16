@@ -56,4 +56,26 @@ public class JnzInstruction extends Instruction {
     // then continue with the sequential execution of the program.
     return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
+
+  // My TODO: Add javadoc
+	@Override
+	public String toString() {
+		return getLabelString() + getOpcode() + " " + source + " " + destinationLabel;
+	}
+	
+	// My TODO: Add javadoc
+	// My TODO: Implement equals method
+	@Override
+	public boolean equals(Object o) {
+		// temporary implementation to stop compilation errors
+		return false;
+	}
+	
+	// My TODO: Add javadoc
+	// My TODO: Implement and override hashCode method
+	@Override
+	public int hashCode() {
+		// temporary implementation to stop compilation errors
+		return  (int) ( java.lang.Math.random() * 1000 );
+	}
 }
