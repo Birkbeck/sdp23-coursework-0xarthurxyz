@@ -39,4 +39,26 @@ public class OutInstruction extends Instruction {
     System.out.println( m.getRegisters().get(source) );
 		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
+
+  // My TODO: Add javadoc
+	@Override
+	public String toString() {
+		return getLabelString() + getOpcode() + " " + source;
+	}
+
+	// My TODO: Add javadoc
+	// My TODO: Implement equals method
+	@Override
+	public boolean equals(Object o) {
+		// temporary implementation to stop compilation errors
+		return false;
+	}
+	
+	// My TODO: Add javadoc
+	// My TODO: Implement and override hashCode method
+	@Override
+	public int hashCode() {
+		// temporary implementation to stop compilation errors
+		return  (int) ( java.lang.Math.random() * 1000 );
+	}
 }
