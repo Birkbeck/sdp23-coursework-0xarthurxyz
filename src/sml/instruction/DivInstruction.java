@@ -10,5 +10,11 @@ import sml.RegisterName;
  * @author
  */
 public class DivInstruction {
-  
+  // My TODO: Add javadoc
+	private final RegisterName result;
+	// My TODO: Add javadoc
+	private final RegisterName source;
+	// My TODO: Add javadoc
+	public static final String OP_CODE = "div";
+
 }
