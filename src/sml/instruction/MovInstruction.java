@@ -1,5 +1,7 @@
 package sml.instruction;
 
+import sml.Instruction;
+import sml.Machine;
 import sml.RegisterName;
 
 // TODO: write a JavaDoc for the class
@@ -26,5 +28,21 @@ public class MovInstruction extends Instruction {
 		super(label, OP_CODE);
 		this.result = result;
 		this.value = value;
+	}
+
+    /** 
+	 * Performs a state transition on a given machine.
+	 * 
+	 * <p> Stores the value of an integer in a register.
+	 * 
+	 * @param m	Machine object with a given set of registers
+	 * @return 	the new program counter (for jump instructions)
+	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 * 			the instruction with the next address is to be executed
+	 */
+	@Override
+	public int execute(Machine m) {
+		m.getRegisters().set(result, value);
+		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
 }
