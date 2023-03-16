@@ -59,7 +59,7 @@ public final class Translator {
         // This `try-with-resources` block declares resources that can be used in the `try`
         // block and will be closed after the execution of this block.
         // 
-        // Declares and initializes a Scanner object using the supplied plaintext file
+        // Specifically declares and initializes a Scanner object using the supplied plaintext file
         try (var sc = new Scanner(new File(fileName), StandardCharsets.UTF_8)) {
             // Removes any existing labels
             // 
