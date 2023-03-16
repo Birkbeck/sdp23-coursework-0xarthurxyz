@@ -169,12 +169,24 @@ public final class Translator {
     }
 
 
+    /**
+     * Parses the characters representing the label in the current instruction that 
+     * is being translated.
+     * 
+     * @return  characters representing the label, if 
+     */
     private String getLabel() {
+        // Parses next word from the remaining characters in the current line
         String word = scan();
+        // If label is present:
+        // Parses the characters representing the label
         if (word.endsWith(":"))
             return word.substring(0, word.length() - 1);
 
-        // undo scanning the word
+        // If no label is present:
+        // Reconstructs the remaining characters in the current line
+        // mostly likely representing opcodes, register names and values so they can be parsed
+        // elsewhere.
         line = word + " " + line;
         return null;
     }
@@ -183,7 +195,7 @@ public final class Translator {
      * Parses a single word from the remaining characters in the current line of the plaintext file
      * that have not be processed yet.
      * 
-     * @return  first word of line and remove it from line; if there is no word, return ""
+     * @return  first word of line and remove it from line; if there is no word, return {@code ""}
      */
     private String scan() {
         line = line.trim();
