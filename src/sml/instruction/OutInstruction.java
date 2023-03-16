@@ -25,4 +25,18 @@ public class OutInstruction extends Instruction {
 		super(label, OP_CODE);
 		this.source = source;
 	}
+
+  /** 
+	 * Prints the value of a register to the console.
+	 * 
+	 * @param m	Machine object with a given set of registers
+	 * @return 	the new program counter (for jump instructions)
+	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 * 			the instruction with the next address is to be executed
+	 */
+	@Override
+	public int execute(Machine m) {
+    System.out.println( m.getRegisters().get(source) );
+		return NORMAL_PROGRAM_COUNTER_UPDATE;
+	}
 }
