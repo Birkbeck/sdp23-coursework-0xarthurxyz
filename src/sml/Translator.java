@@ -172,6 +172,10 @@ public final class Translator {
             }
 
             // My TODO: OutInstruction
+            case OutInstruction.OP_CODE -> {
+                String s = scan();
+                return new OutInstruction(label, Register.valueOf(s));
+            }
 
             // My TODO: MovInstruction
 
