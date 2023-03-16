@@ -1,6 +1,7 @@
 package sml.instruction;
 
 import sml.Instruction;
+import sml.Machine;
 import sml.RegisterName;
 
 // TODO: write a JavaDoc for the class
@@ -29,5 +30,30 @@ public class JnzInstruction extends Instruction {
 		super(label, OP_CODE);
 		this.source = source;
 		this.destinationLabel = destinationLabel;
+	}
+
+  /** 
+	 * Performs a state transition on a given machine.
+	 * 
+	 * <p> Returns the index of the next instruction to be executed
+	 * 
+	 * @param m	Machine object with a given set of registers 
+	 * @return 	the new program counter (for jump instructions)
+	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 * 			the instruction with the next address is to be executed
+	 */
+	@Override
+	public int execute(Machine m) {
+    // If the value stored at register `source` is not zero
+    // then execute the instruction labeled `destinationLabel` next.
+    if ( m.getRegisters().get(source) != 0 ) {
+      // Returns the index of the next instruction to execute in the 
+      // List<Instruction> `program` list.
+      return m.getLabels().getAddress(destinationLabel);
+    }
+
+    // If the value stored at register `source` is zero
+    // then continue with the sequential execution of the program.
+    return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
 }
