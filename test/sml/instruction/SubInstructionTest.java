@@ -33,6 +33,14 @@ class SubInstructionTest {
   }
 
   @Test
+  void givenInstruction_whenInstantiating_thenOpcodeCorrect() {
+    registers.set(EAX, 5);
+    registers.set(EBX, 6);
+    Instruction instruction = new SubInstruction(null, EAX, EBX);
+    Assertions.assertEquals(instruction.getOpcode(), "sub");
+  }
+
+  @Test
   void givenSimpleValues_whenSubtracting_thenResultIsCorrect() {
     registers.set(EAX, 6);
     registers.set(EBX, 5);
