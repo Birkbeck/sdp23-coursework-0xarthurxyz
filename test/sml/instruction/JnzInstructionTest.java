@@ -39,6 +39,7 @@ class JnzInstructionTest {
     // Construct next instruction
     // Instruction nextInstruction = new MovInstruction(null, EBX, 2)
     // Assert next instruction is equal
+    // My TODO: implement equals methods
     // Assertions.assertEquals(program.get(programCounter), nextInstruction);
   }
 
