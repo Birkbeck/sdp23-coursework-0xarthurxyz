@@ -11,12 +11,34 @@ import sml.Registers;
 
 import static sml.Registers.Register.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 class OutInstructionTest {
   private Machine machine;
   private Registers registers;
+  /**
+   * The "standard" output stream is already open and ready to accept output data.
+   * 
+   * <p> This is used to capture the standard output stream and re-assign it after
+   * each test completes to avoid conflicts across tests.
+   * This is important because {@code System.out} is a static resource 
+   * and thus shared across objects.
+   */
+  private final PrintStream standardOutput = System.out;
+  /**
+   * The {@code ByteArrayOutputStream} class implements an output stream in which the 
+   * data is written into a byte array. The buffer automatically grows as data is written to it. 
+   * 
+   * <p> The data can be retrieved using {@code toString()}.
+   */
+  private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
   @BeforeEach
   void setUp() {
+    // Captures the standard output for unit testing
+    System.setOut(new PrintStream(output));
+
     machine = new Machine(new Registers());
     registers = machine.getRegisters();
     // ...
@@ -24,6 +46,10 @@ class OutInstructionTest {
 
   @AfterEach
   void tearDown() {
+    // Re-assigns the previously captured standard output stream after
+    // each test completes to avoid conflicts across tests.
+    System.setOut(standardOutput);
+
     machine = null;
     registers = null;
   }
@@ -33,5 +59,16 @@ class OutInstructionTest {
     registers.set(EAX, 5);
     Instruction instruction = new OutInstruction(null, EAX);
     Assertions.assertEquals(instruction.getOpcode(), "out");
+    
+  }
+
+  @Test
+  void givenSimpleValue_whenPrinting_thenConsoleOutputIsCorrect() {
+    registers.set(EAX, 5);
+    Instruction instruction = new OutInstruction(null, EAX);
+    instruction.execute(machine);
+    // Converts the (captured) standard output stream into a String using `toString()`
+    // Removes the new line added by `System.out.println()`
+    Assertions.assertEquals( "5", output.toString().trim());
   }
 }
