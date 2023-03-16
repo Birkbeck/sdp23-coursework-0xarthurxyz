@@ -5,6 +5,7 @@ import java.util.Objects;
 import sml.Instruction;
 import sml.Machine;
 import sml.RegisterName;
+import sml.Registers.Register;
 
 // TODO: write a JavaDoc for the class
 /**
@@ -68,11 +69,20 @@ public class MovInstruction extends Instruction {
 		return false;
 	}
 	
-	// My TODO: Add javadoc
-	// My TODO: Implement and override hashCode method
+	/**
+	 * Produces a unique hash code for every possible state of this object.
+	 * 
+	 * <p> The state of this object is defined by the fields of this object, which is why they 
+	 * are used to calculate unique hash codes for this class.
+	 * 
+	 * @return	a unique hash code
+	 */
 	@Override
 	public int hashCode() {
-		// temporary implementation to stop compilation errors
-		return  (int) ( java.lang.Math.random() * 1000 );
+		int hash = 7; // Arbitrary non-zero constant
+		hash = 31 * hash + ((Register) result).hashCode(); // Hash code of this Enum constant
+		hash = 31 * hash + value;
+		hash = 31 * hash + OP_CODE.hashCode(); // // Hash code of this String
+		return hash;
 	}
 }
