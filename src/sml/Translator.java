@@ -178,6 +178,12 @@ public final class Translator {
             }
 
             // My TODO: MovInstruction
+            // My TODO: Test this parses the `int` value correctly
+            case MovInstruction.OP_CODE -> {
+                String r = scan();
+                int value = Integer.parseInt( scan() );
+                return new MovInstruction(label, Register.valueOf(r), value);
+            }
 
             // My TODO: JnzInstruction
 
