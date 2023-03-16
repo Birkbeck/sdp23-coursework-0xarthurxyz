@@ -57,6 +57,9 @@ public final class Translator {
      * list, and creates a mapping from the {@code String} {@code label} to the 
      * appropriate index in the {@code List<Instruction>} {@code program} list.
      * 
+     * <p> Post condition: {@code program} is a list of all instructions, each instruction 
+     * has values and register names to read from and write to, {@code labels} maps any label to
+     * the appropriate index in the {@code program} list to change the sequence of execution.
      * 
      * @param labels        a mapping from labels to index locations ({@code Map<String, Integer>})
      * @param program       a list of Instructions ({@code List<Instruction>})
