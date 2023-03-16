@@ -58,4 +58,14 @@ class JnzInstructionTest {
     Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
   }
 
+  @Test
+  void givenEquivalentInstructions_whenHashCodes_thenEquivalent() {
+    // Instantiates first instruction
+    Instruction firstInstruction = new JnzInstruction(null, EAX, "f3");
+    // Instantiates second instruction
+    Instruction SecondInstruction = new JnzInstruction(null, EAX, "f3");
+    // Compares equivalent instructions
+    Assertions.assertEquals(firstInstruction.hashCode(), SecondInstruction.hashCode());
+  }
+
 }
