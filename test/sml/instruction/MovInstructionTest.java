@@ -13,19 +13,16 @@ import static sml.Registers.Register.*;
 
 public class MovInstructionTest {
     private Machine machine;
-    private Registers registers;
 
     @BeforeEach
     void setUp() {
         machine = new Machine(new Registers());
-        registers = machine.getRegisters();
         // ...
     }
 
     @AfterEach
     void tearDown() {
         machine = null;
-        registers = null;
     }
 
     @Test

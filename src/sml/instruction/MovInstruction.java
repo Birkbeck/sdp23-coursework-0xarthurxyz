@@ -65,6 +65,6 @@ public class MovInstruction extends Instruction {
 	@Override
 	public int hashCode() {
 		// temporary implementation to stop compilation errors
-		return 0;
+		return  (int) ( java.lang.Math.random() * 1000 );
 	}
 }

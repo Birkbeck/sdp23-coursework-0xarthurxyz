@@ -42,25 +42,26 @@ class SubInstructionTest {
     }
 
     @Test
-    void givenEquivalentMachines_whenComparing_thenTrue() {
-        // instantiates second machine for comparison
-        Machine otherMachine = new Machine(new Registers());
-        Registers otherRegisters = otherMachine.getRegisters();
-        // sets both machines to equal state
+    void givenEquivalentInstructions_whenComparing_thenTrue() {
         registers.set(EAX, 6);
-        otherRegisters.set(EAX, 6);
-        Assertions.assertTrue(machine.equals(otherMachine));
+        registers.set(EBX, 5);
+        // Instantiates first instruction
+        Instruction firstInstruction = new SubInstruction(null, EAX, EBX);
+        // Instantiates second instruction
+        Instruction SecondInstruction = new SubInstruction(null, EAX, EBX);
+        // Compares equivalent instructions
+        Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
     }
 
     @Test
-    void givenEquivalentMachines_whenHashCodes_thenEquivalent() {
-        // instantiates second machine for comparison
-        Machine otherMachine = new Machine(new Registers());
-        Registers otherRegisters = otherMachine.getRegisters();
-        // sets both machines to equal state
+    void givenEquivalentInstructions_whenHashCodes_thenEquivalent() {
         registers.set(EAX, 6);
-        otherRegisters.set(EAX, 6);
-        Assertions.assertEquals(machine.hashCode(), otherMachine.hashCode());
+        registers.set(EBX, 5);
+        // Instantiates first instruction
+        Instruction firstInstruction = new SubInstruction(null, EAX, EBX);
+        // Instantiates second instruction
+        Instruction SecondInstruction = new SubInstruction(null, EAX, EBX);
+        // Compares equivalent instructions
+        Assertions.assertEquals(firstInstruction.hashCode(), SecondInstruction.hashCode());
     }
-
 }
