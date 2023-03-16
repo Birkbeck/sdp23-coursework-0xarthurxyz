@@ -92,6 +92,7 @@ public final class Machine {
 		return false;
 	}
 
+	// My TODO: Test hashCode implementation of Machine.java
 	// My TODO: add javadoc
 	@Override
 	public int hashCode() {
