@@ -178,6 +178,7 @@ public final class Translator {
     private String getLabel() {
         // Parses next word from the remaining characters in the current line
         String word = scan();
+        
         // If label is present:
         // Parses the characters representing the label
         if (word.endsWith(":"))
