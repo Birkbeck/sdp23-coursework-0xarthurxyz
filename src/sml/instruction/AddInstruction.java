@@ -84,8 +84,8 @@ public class AddInstruction extends Instruction {
 	@Override
 	public int hashCode() {
 		int hash = 7; // Arbitrary non-zero constant
-		hash = 31 * hash + ((Register) this.result).hashCode(); // Hash code of this Enum constant
-		hash = 31 * hash + ((Register) this.source).hashCode(); // Hash code of this Enum constant
+		hash = 31 * hash + ((Register) result).hashCode(); // Hash code of this Enum constant
+		hash = 31 * hash + ((Register) source).hashCode(); // Hash code of this Enum constant
 		hash = 31 * hash + OP_CODE.hashCode(); // // Hash code of this String
 		return hash;
 	}
