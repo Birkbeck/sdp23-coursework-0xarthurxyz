@@ -19,7 +19,7 @@ class AddInstructionTest {
   void setUp() {
     machine = new Machine(new Registers());
     registers = machine.getRegisters();
-    //...
+    // ...
   }
 
   @AfterEach
@@ -44,5 +44,29 @@ class AddInstructionTest {
     Instruction instruction = new AddInstruction(null, EAX, EBX);
     instruction.execute(machine);
     Assertions.assertEquals(1, machine.getRegisters().get(EAX));
+  }
+
+  @Test
+  void givenEquivalentInstructions_whenComparing_thenTrue() {
+    registers.set(EAX, 6);
+    registers.set(EBX, 5);
+    // Instantiates first instruction
+    Instruction firstInstruction = new AddInstruction(null, EAX, EBX);
+    // Instantiates second instruction
+    Instruction SecondInstruction = new AddInstruction(null, EAX, EBX);
+    // Compares equivalent instructions
+    Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
+  }
+
+  @Test
+  void givenEquivalentInstructions_whenHashCodes_thenEquivalent() {
+    registers.set(EAX, 6);
+    registers.set(EBX, 5);
+    // Instantiates first instruction
+    Instruction firstInstruction = new AddInstruction(null, EAX, EBX);
+    // Instantiates second instruction
+    Instruction SecondInstruction = new AddInstruction(null, EAX, EBX);
+    // Compares equivalent instructions
+    Assertions.assertEquals(firstInstruction.hashCode(), SecondInstruction.hashCode());
   }
 }
