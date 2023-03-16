@@ -45,14 +45,21 @@ public final class Translator {
         this.fileName =  fileName;
     }
 
+    // My TODO: Consider removing below comment
     // translate the small program in the file into lab (the labels) and
     // prog (the program)
     // return "no errors were detected"
     /**
+     * Translates every instruction from the plaintext file into the appropriate internal form.
+     * 
+     * <p> Specifically:
+     * Appends an Instruction object to the end of the {@code List<Instruction>} {@code program} 
+     * list, and creates a mapping from the {@code String} {@code label} to the 
+     * appropriate index in the {@code List<Instruction>} {@code program} list.
      * 
      * 
-     * @param labels        a mapping from 
-     * @param program       
+     * @param labels        a mapping from labels to index locations ({@code Map<String, Integer>})
+     * @param program       a list of Instructions ({@code List<Instruction>})
      * @throws IOException  
      */
     public void readAndTranslate(Labels labels, List<Instruction> program) throws IOException {
