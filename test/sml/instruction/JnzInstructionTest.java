@@ -48,4 +48,14 @@ class JnzInstructionTest {
     // Assertions.assertEquals(program.get(programCounter), nextInstruction);
   }
 
+  @Test
+  void givenEquivalentInstructions_whenComparing_thenTrue() {
+    // Instantiates first instruction
+    Instruction firstInstruction = new JnzInstruction(null, EAX, "f3");
+    // Instantiates second instruction
+    Instruction SecondInstruction = new JnzInstruction(null, EAX, "f3");
+    // Compares equivalent instructions
+    Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
+  }
+
 }

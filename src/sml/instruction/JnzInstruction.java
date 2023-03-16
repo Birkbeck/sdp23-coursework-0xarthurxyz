@@ -1,5 +1,7 @@
 package sml.instruction;
 
+import java.util.Objects;
+
 import sml.Instruction;
 import sml.Machine;
 import sml.RegisterName;
@@ -67,7 +69,13 @@ public class JnzInstruction extends Instruction {
 	// My TODO: Implement equals method
 	@Override
 	public boolean equals(Object o) {
-		// temporary implementation to stop compilation errors
+		// Uses `instanceof` pattern matching.
+		if (o instanceof JnzInstruction other) {
+			// The binding variable `other` can be used in this scope
+			// because the `instanceof` predicate evaluates to true in this block.
+			return Objects.equals(this.source, other.source)
+					&& Objects.equals(this.destinationLabel, other.destinationLabel);
+		}
 		return false;
 	}
 	
