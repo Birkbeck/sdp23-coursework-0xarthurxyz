@@ -42,5 +42,4 @@ class JnzInstructionTest {
     // Assertions.assertEquals(program.get(programCounter), nextInstruction);
   }
 
-
 }
