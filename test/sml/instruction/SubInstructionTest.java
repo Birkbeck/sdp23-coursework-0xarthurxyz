@@ -51,4 +51,16 @@ class SubInstructionTest {
         otherRegisters.set(EAX, 6);
         Assertions.assertTrue(machine.equals(otherMachine));
     }
+
+    @Test
+    void givenEquivalentMachines_whenHashCodes_thenEquivalent() {
+        // instantiates second machine for comparison
+        Machine otherMachine = new Machine(new Registers());
+        Registers otherRegisters = otherMachine.getRegisters();
+        // sets both machines to equal state
+        registers.set(EAX, 6);
+        otherRegisters.set(EAX, 6);
+        Assertions.assertEquals(machine.hashCode(), otherMachine.hashCode());
+    }
+
 }
