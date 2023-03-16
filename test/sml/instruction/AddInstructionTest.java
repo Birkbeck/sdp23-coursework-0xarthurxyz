@@ -54,8 +54,11 @@ class AddInstructionTest {
     Assertions.assertEquals(1, machine.getRegisters().get(EAX));
   }
 
+  /**
+   * Unit test for {@code equals()} method
+   */
   @Test
-  void givenEquivalentInstructions_whenComparing_thenTrue() {
+  void givenEquivalentInstructions_whenEquals_thenTrue() {
     registers.set(EAX, 6);
     registers.set(EBX, 5);
     // Instantiates first instruction
@@ -64,6 +67,28 @@ class AddInstructionTest {
     Instruction SecondInstruction = new AddInstruction(null, EAX, EBX);
     // Compares equivalent instructions
     Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
+  }
+
+  /**
+   * Unit test for {@code equals()} method and null value
+   */
+  @Test
+  void givenNullAndAnInstruction_whenEquals_thenFalse() {
+    // Instantiates an instruction
+    Instruction firstInstruction = new AddInstruction(null, EAX, EBX);
+    // Compares instruction with null
+    Assertions.assertFalse(firstInstruction.equals(null));
+  }
+
+  /**
+   * Unit test for reflexivity in {@code equals()} method
+   */
+  @Test
+  void givenSameObject_whenEquals_thenTrue() {
+    // Instantiates an instruction
+    Instruction firstInstruction = new AddInstruction(null, EAX, EBX);
+    // Compares instruction with itself
+    Assertions.assertTrue(firstInstruction.equals(firstInstruction));
   }
 
   @Test
