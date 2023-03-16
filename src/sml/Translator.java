@@ -74,7 +74,10 @@ public final class Translator {
             
             // Iteratively translates every instruction into internal form.
             // 
-            // For every line in the plaintext file:
+            // Specifically:
+            // + Appends an Instruction object to the List<Instruction> `program` list, and
+            // + Creates a mapping from the String `label` to the appropriate index in the
+            //   List<Instruction> `program` list.
             while (sc.hasNextLine()) {
                 // Reads a line from the plaintext file using the Scanner `nextLine()` method
                 line = sc.nextLine();
