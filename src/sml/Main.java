@@ -9,20 +9,12 @@ public class Main {
 	 * @param args name of the file containing the program text.
 	 */
 	public static void main(String... args) {
-		//
-		// My TODO: Uncomment offifical instructions below:
-		//
-
 		if (args.length != 1) {
 			System.err.println("Incorrect number of arguments - Machine <file> - required");
 			System.exit(-1);
 		}
 
 		try {
-			//
-			// My TODO: Uncomment offifical instructions below:
-			//
-
 			Translator t = new Translator(args[0]);
 			Machine m = new Machine(new Registers());
 			t.readAndTranslate(m.getLabels(), m.getProgram());
