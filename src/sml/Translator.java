@@ -21,6 +21,8 @@ public final class Translator {
     /**
      * The name of the plaintext file containing the instructions
      * that the machine will execute.
+     * 
+     * <p> This field is {@code final}, which means that it cannot be overridden/modified.
      */
     private final String fileName; // source file of SML code
 
@@ -46,10 +48,25 @@ public final class Translator {
     // translate the small program in the file into lab (the labels) and
     // prog (the program)
     // return "no errors were detected"
-
+    /**
+     * 
+     * 
+     * @param labels        a mapping from 
+     * @param program       
+     * @throws IOException  
+     */
     public void readAndTranslate(Labels labels, List<Instruction> program) throws IOException {
+        // This `try-with-resources` block declares resources that can be used in the `try`
+        // block and will be closed after the execution of this block.
+        // 
+        // Declares and initializes a Scanner object using the supplied plaintext file
         try (var sc = new Scanner(new File(fileName), StandardCharsets.UTF_8)) {
+            // Removes any existing labels
+            // 
+            // Specifically removes all mappings from the Map<String, Integer> `labels`  map. 
+            // The `labels` map will be empty after this method is called.
             labels.reset();
+            // Removes 
             program.clear();
 
             // Each iteration processes line and reads the next input line into "line"
