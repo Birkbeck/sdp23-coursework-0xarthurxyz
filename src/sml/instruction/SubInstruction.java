@@ -7,9 +7,11 @@ import sml.Machine;
 import sml.RegisterName;
 
 public class SubInstruction extends Instruction {
+	// My TODO: Add javadoc
   private final RegisterName result;
+	// My TODO: Add javadoc
 	private final RegisterName source;
-
+	// My TODO: Add javadoc
 	public static final String OP_CODE = "sub";
 
 	/**
