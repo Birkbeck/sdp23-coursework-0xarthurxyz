@@ -19,7 +19,7 @@ import static sml.Registers.Register;
  */
 public final class Translator {
     /**
-     * The name of the plaintext file that contains the instructions
+     * The name of the plaintext file containing the instructions
      * that the machine will execute.
      */
     private final String fileName; // source file of SML code
@@ -31,6 +31,14 @@ public final class Translator {
      */
     private String line = "";
 
+    /**
+     * Constructor: Produces a translator object with a file name and
+     * helper methods to parse the instructions contained in the plaintext file
+     * into internal form before being executed.
+     * 
+     * @param fileName  name of the plaintext file containing the instructions
+     *                  that the translator object should parse.
+     */
     public Translator(String fileName) {
         this.fileName =  fileName;
     }
