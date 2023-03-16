@@ -149,7 +149,8 @@ public final class Translator {
             }
 
             // TODO: add code for all other types of instructions
-            
+
+            // My TODO: SubInstruction
             case SubInstruction.OP_CODE -> {
                 String r = scan();
                 String s = scan();
@@ -157,8 +158,18 @@ public final class Translator {
             }
 
             // My TODO: MulInstruction
+            case MulInstruction.OP_CODE -> {
+                String r = scan();
+                String s = scan();
+                return new MulInstruction(label, Register.valueOf(r), Register.valueOf(s));
+            }
 
             // My TODO: DivInstruction
+            case DivInstruction.OP_CODE -> {
+                String r = scan();
+                String s = scan();
+                return new DivInstruction(label, Register.valueOf(r), Register.valueOf(s));
+            }
 
             // My TODO: OutInstruction
 
