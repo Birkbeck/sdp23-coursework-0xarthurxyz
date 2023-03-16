@@ -74,6 +74,12 @@ public final class Translator {
             }
 
             // TODO: add code for all other types of instructions
+            
+            case SubInstruction.OP_CODE -> {
+                String r = scan();
+                String s = scan();
+                return new SubInstruction(label, Register.valueOf(r), Register.valueOf(s));
+            }
 
             // TODO: Then, replace the switch by using the Reflection API
 
