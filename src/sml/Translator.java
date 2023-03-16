@@ -66,18 +66,48 @@ public final class Translator {
             // Specifically removes all mappings from the Map<String, Integer> `labels`  map. 
             // The `labels` map will be empty after this method is called.
             labels.reset();
-            // Removes 
+            // Removes any existing instructions stored in the program.
+            // 
+            // Specifically removes all elements from the List<Instruction> `program` list.
+            // The `program` list will be empty after this method is called.
             program.clear();
-
-            // Each iteration processes line and reads the next input line into "line"
+            
+            // Iteratively translates every instruction into internal form.
+            // 
+            // For every line in the plaintext file:
             while (sc.hasNextLine()) {
+                // Reads a line from the plaintext file using the Scanner `nextLine()` method
                 line = sc.nextLine();
+                // Parses the label if present using the Translator `getLabel()` method
                 String label = getLabel();
-
+                // Produces an Instruction object of the appropriate type
+                // e.g. AddInstruction, SubInstruction, MovInstruction, etc
                 Instruction instruction = getInstruction(label);
+                // Saves the instruction to internal form.
+                // 
+                // Specifically, appends the Instruction object to the end of the 
+                // List<Instruction> `program` list (to be executed later).
+                // 
+                // Note: An instruction is only appended if it is parsed correctly 
+                // (i.e. not `null`)
                 if (instruction != null) {
-                    if (label != null)
+                    // Saves the label to internal form.
+                    // 
+                    // Specifically, creates a mapping from the String `label` to the 
+                    // index (integer) at which the Instruction object is stored in the 
+                    // List<Instruction> `program` list.
+                    // 
+                    // This allows the program to find the Instruction stored at a specific 
+                    // location.
+                    // 
+                    // If the map previously contained the key String `label`, 
+                    // the old mapping is replaced by the new value.
+                    //
+                    // Note: A label is only mapped to if it is present and parsed correctly 
+                    // (i.e. not `null`)
+                    if (label != null) {
                         labels.addLabel(label, program.size());
+                    }
                     program.add(instruction);
                 }
             }
