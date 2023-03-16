@@ -16,52 +16,52 @@ import sml.Registers;
 import static sml.Registers.Register.*;
 
 class SubInstructionTest {
-    private Machine machine;
-    private Registers registers;
+  private Machine machine;
+  private Registers registers;
 
-    @BeforeEach
-    void setUp() {
-        machine = new Machine(new Registers());
-        registers = machine.getRegisters();
-        // ...
-    }
+  @BeforeEach
+  void setUp() {
+    machine = new Machine(new Registers());
+    registers = machine.getRegisters();
+    // ...
+  }
 
-    @AfterEach
-    void tearDown() {
-        machine = null;
-        registers = null;
-    }
+  @AfterEach
+  void tearDown() {
+    machine = null;
+    registers = null;
+  }
 
-    @Test
-    void givenSimpleValues_whenSubtracting_thenResultIsCorrect() {
-        registers.set(EAX, 6);
-        registers.set(EBX, 5);
-        Instruction instruction = new SubInstruction(null, EAX, EBX);
-        instruction.execute(machine);
-        Assertions.assertEquals(1, machine.getRegisters().get(EAX));
-    }
+  @Test
+  void givenSimpleValues_whenSubtracting_thenResultIsCorrect() {
+    registers.set(EAX, 6);
+    registers.set(EBX, 5);
+    Instruction instruction = new SubInstruction(null, EAX, EBX);
+    instruction.execute(machine);
+    Assertions.assertEquals(1, machine.getRegisters().get(EAX));
+  }
 
-    @Test
-    void givenEquivalentInstructions_whenComparing_thenTrue() {
-        registers.set(EAX, 6);
-        registers.set(EBX, 5);
-        // Instantiates first instruction
-        Instruction firstInstruction = new SubInstruction(null, EAX, EBX);
-        // Instantiates second instruction
-        Instruction SecondInstruction = new SubInstruction(null, EAX, EBX);
-        // Compares equivalent instructions
-        Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
-    }
+  @Test
+  void givenEquivalentInstructions_whenComparing_thenTrue() {
+    registers.set(EAX, 6);
+    registers.set(EBX, 5);
+    // Instantiates first instruction
+    Instruction firstInstruction = new SubInstruction(null, EAX, EBX);
+    // Instantiates second instruction
+    Instruction SecondInstruction = new SubInstruction(null, EAX, EBX);
+    // Compares equivalent instructions
+    Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
+  }
 
-    @Test
-    void givenEquivalentInstructions_whenHashCodes_thenEquivalent() {
-        registers.set(EAX, 6);
-        registers.set(EBX, 5);
-        // Instantiates first instruction
-        Instruction firstInstruction = new SubInstruction(null, EAX, EBX);
-        // Instantiates second instruction
-        Instruction SecondInstruction = new SubInstruction(null, EAX, EBX);
-        // Compares equivalent instructions
-        Assertions.assertEquals(firstInstruction.hashCode(), SecondInstruction.hashCode());
-    }
+  @Test
+  void givenEquivalentInstructions_whenHashCodes_thenEquivalent() {
+    registers.set(EAX, 6);
+    registers.set(EBX, 5);
+    // Instantiates first instruction
+    Instruction firstInstruction = new SubInstruction(null, EAX, EBX);
+    // Instantiates second instruction
+    Instruction SecondInstruction = new SubInstruction(null, EAX, EBX);
+    // Compares equivalent instructions
+    Assertions.assertEquals(firstInstruction.hashCode(), SecondInstruction.hashCode());
+  }
 }
