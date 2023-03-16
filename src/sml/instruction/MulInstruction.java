@@ -15,7 +15,7 @@ public class MulInstruction extends Instruction {
 	// My TODO: Add javadoc
 	private final RegisterName source;
 	// My TODO: Add javadoc
-	public static final String OP_CODE = "add";
+	public static final String OP_CODE = "mul";
 
   /**
 	 * Constructor: Instantiates a multiplication instruction given two register names.
