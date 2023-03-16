@@ -26,6 +26,12 @@ class MovInstructionTest {
   }
 
   @Test
+  void givenInstruction_whenInstantiating_thenOpcodeCorrect() {
+    Instruction instruction = new MovInstruction(null, EAX, 1);
+    Assertions.assertEquals(instruction.getOpcode(), "add");
+  }
+
+  @Test
   void givenPositiveInteger_whenMoving_thenRegisterIsSetCorrectly() {
     Instruction instruction = new MovInstruction(null, EAX, 1);
     instruction.execute(machine);
