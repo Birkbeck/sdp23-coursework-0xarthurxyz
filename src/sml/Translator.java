@@ -156,6 +156,16 @@ public final class Translator {
                 return new SubInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
 
+            // My TODO: MulInstruction
+
+            // My TODO: DivInstruction
+
+            // My TODO: OutInstruction
+
+            // My TODO: MovInstruction
+
+            // My TODO: JnzInstruction
+
             // TODO: Then, replace the switch by using the Reflection API
 
             // TODO: Next, use dependency injection to allow this machine class
@@ -178,7 +188,7 @@ public final class Translator {
     private String getLabel() {
         // Parses next word from the remaining characters in the current line
         String word = scan();
-        
+
         // If label is present:
         // Parses the characters representing the label
         if (word.endsWith(":"))
