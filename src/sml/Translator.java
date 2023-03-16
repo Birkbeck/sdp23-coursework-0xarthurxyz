@@ -28,8 +28,8 @@ public final class Translator {
 
     // line contains the characters in the current line that's not been processed yet
     /**
-     * String representing the next line of the plaintext file
-     * that will be processed next.
+     * String representing the characters in the current line of the plaintext file
+     * that have not be processed yet and will be processed next.
      */
     private String line = "";
 
@@ -179,9 +179,11 @@ public final class Translator {
         return null;
     }
 
-    /*
-     * Return the first word of line and remove it from line.
-     * If there is no word, return "".
+    /**
+     * Parses a single word from the remaining characters in the current line of the plaintext file
+     * that have not be processed yet.
+     * 
+     * @return  first word of line and remove it from line; if there is no word, return ""
      */
     private String scan() {
         line = line.trim();
