@@ -70,6 +70,9 @@ public abstract class Instruction {
 	@Override
 	public abstract String toString();
 
+	// My TODO: Confirm this todo is implemented
+	// TODO: Make sure that subclasses also implement equals and hashCode (needed in class Machine).
+
 	/**
 	 * Evaluates whether some other object is "equal to" this one.
 	 * 
