@@ -36,10 +36,15 @@ class JnzInstructionTest {
     Instruction instruction = new JnzInstruction(null, EAX, "testLabel");
     // Assert programCounter is equal to NORMAL_PROGRAM_COUNTER_UPDATE
     Assertions.assertEquals(instruction.getOpcode(), "add");
+    
     // Construct next instruction
     // Instruction nextInstruction = new MovInstruction(null, EBX, 2)
-    // Assert next instruction is equal
+    
+    //
     // My TODO: implement equals methods
+    //
+
+    // Assert next instruction is equal
     // Assertions.assertEquals(program.get(programCounter), nextInstruction);
   }
 
