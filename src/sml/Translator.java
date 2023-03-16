@@ -18,7 +18,10 @@ import static sml.Registers.Register;
  * @author ...
  */
 public final class Translator {
-
+    /**
+     * The name of the plaintext file that contains the instructions
+     * that the machine will execute.
+     */
     private final String fileName; // source file of SML code
 
     // line contains the characters in the current line that's not been processed yet
