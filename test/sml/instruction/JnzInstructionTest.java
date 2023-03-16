@@ -9,7 +9,9 @@ import sml.Instruction;
 import sml.Machine;
 import sml.Registers;
 
+import static sml.Instruction.NORMAL_PROGRAM_COUNTER_UPDATE;
 import static sml.Registers.Register.*;
+
 
 class JnzInstructionTest {
   private Machine machine;
@@ -29,23 +31,12 @@ class JnzInstructionTest {
   }
 
   @Test
-  void givenRegisterSetToZero_whenExecutingJnz_thenContinueSequentialExecution() {
+  void givenRegisterEqualsZero_whenExecutingJnz_thenContinueSequentialExecution() {
     // Set source register to 0
     registers.set(EAX, 0);
-    // Execute JnzInstruction
-    Instruction instruction = new JnzInstruction(null, EAX, "testLabel");
+    Instruction instruction = new JnzInstruction(null, EAX, "anyLabel");
     // Assert programCounter is equal to NORMAL_PROGRAM_COUNTER_UPDATE
-    Assertions.assertEquals(instruction.getOpcode(), "add");
-    
-    // Construct next instruction
-    // Instruction nextInstruction = new MovInstruction(null, EBX, 2)
-    
-    //
-    // My TODO: implement equals methods
-    //
-
-    // Assert next instruction is equal
-    // Assertions.assertEquals(program.get(programCounter), nextInstruction);
+    Assertions.assertEquals( instruction.execute(machine), NORMAL_PROGRAM_COUNTER_UPDATE );
   }
 
   @Test
