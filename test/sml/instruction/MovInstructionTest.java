@@ -31,4 +31,24 @@ public class MovInstructionTest {
         instruction.execute(machine);
         Assertions.assertEquals(1, machine.getRegisters().get(EAX));
     }
+
+    @Test
+    void givenEquivalentInstructions_whenComparing_thenTrue() {
+        // Instantiates first instruction
+        Instruction firstInstruction = new MovInstruction(null, EAX, 1);;
+        // Instantiates second instruction
+        Instruction SecondInstruction = new MovInstruction(null, EAX, 1);;
+        // Compares equivalent instructions
+        Assertions.assertTrue(firstInstruction.equals(SecondInstruction));
+    }
+
+    @Test
+    void givenEquivalentInstructions_whenHashCodes_thenEquivalent() {
+        // Instantiates first instruction
+        Instruction firstInstruction = new MovInstruction(null, EAX, 1);;
+        // Instantiates second instruction
+        Instruction SecondInstruction = new MovInstruction(null, EAX, 1);;
+        // Compares equivalent instructions
+        Assertions.assertEquals(firstInstruction.hashCode(), SecondInstruction.hashCode());
+    }
 }
