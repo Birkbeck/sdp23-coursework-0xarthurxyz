@@ -1,5 +1,10 @@
-// package sml.instruction;
+package sml.instruction;
 
-// public class JnzInstruction extends Instruction {
+// TODO: write a JavaDoc for the class
+
+/**
+ * @author
+ */
+public class JnzInstruction extends Instruction {
   
-// }
+}

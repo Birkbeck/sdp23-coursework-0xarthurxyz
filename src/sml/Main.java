@@ -37,7 +37,6 @@ public class Main {
 			System.out.println("Beginning program execution.");
 			m.execute();
 			System.out.println("Ending program execution.");
-			System.out.println("Values of register is: " + m.getRegisters().get(EAX));
 
 
 			//
