@@ -30,7 +30,7 @@ public class MovInstruction extends Instruction {
 		this.value = value;
 	}
 
-    /** 
+  /** 
 	 * Performs a state transition on a given machine.
 	 * 
 	 * <p> Stores the value of an integer in a register.
