@@ -67,8 +67,18 @@ class OutInstructionTest {
     registers.set(EAX, 5);
     Instruction instruction = new OutInstruction(null, EAX);
     instruction.execute(machine);
-    // Converts the (captured) standard output stream into a String using `toString()`
-    // Removes the new line added by `System.out.println()`
+    // Converts the (captured) standard output stream to a String using `toString()`
+    // Then removes the new line that is added by `System.out.println()`
     Assertions.assertEquals( "5", output.toString().trim());
+  }
+
+  @Test
+  void givenNegativeValue_whenPrinting_thenConsoleOutputIsCorrect() {
+    registers.set(EAX, -5);
+    Instruction instruction = new OutInstruction(null, EAX);
+    instruction.execute(machine);
+    // Converts the (captured) standard output stream to a String using `toString()`
+    // Then removes the new line that is added by `System.out.println()`
+    Assertions.assertEquals( "-5", output.toString().trim());
   }
 }
