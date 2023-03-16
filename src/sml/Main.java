@@ -35,21 +35,6 @@ public class Main {
 			System.out.println("Ending program execution.");
 
 			System.out.println("Values of registers at program termination:" + m.getRegisters() + ".");
-
-			//
-			// My TODO: Remove my personal instructions below
-			//
-			// Translator t = new Translator("test1.sml");
-			// Machine m = new Machine(new Registers());
-			// t.readAndTranslate(m.getLabels(), m.getProgram());
-
-
-			// System.out.println("Here is the program; it has " + m.getProgram().size() + " instructions.");
-
-			// System.out.println("Beginning program execution.");
-			// m.execute();
-			// System.out.println("Ending program execution.");
-
 		}
 		catch (IOException e) {
 			System.out.println("Error reading the program from " + args[0]);
