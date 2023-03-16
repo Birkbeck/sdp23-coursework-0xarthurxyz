@@ -88,6 +88,7 @@ public final class Machine {
 		return false;
 	}
 
+	// My TODO: add javadoc
 	@Override
 	public int hashCode() {
 		return Objects.hash(labels, program, registers, programCounter);
