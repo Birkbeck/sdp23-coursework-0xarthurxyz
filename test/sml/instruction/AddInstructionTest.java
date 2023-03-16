@@ -29,6 +29,14 @@ class AddInstructionTest {
   }
 
   @Test
+  void givenInstruction_whenInstantiating_thenOpcodeCorrect() {
+    registers.set(EAX, 5);
+    registers.set(EBX, 6);
+    Instruction instruction = new AddInstruction(null, EAX, EBX);
+    Assertions.assertEquals(instruction.getOpcode(), "add");
+  }
+
+  @Test
   void givenSimpleValues_whenAdding_thenResultIsCorrect() {
     registers.set(EAX, 5);
     registers.set(EBX, 6);
