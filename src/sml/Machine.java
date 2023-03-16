@@ -75,8 +75,8 @@ public final class Machine {
 	// https://docs.oracle.com/en/java/javase/14/language/pattern-matching-instanceof-operator.html
 	@Override
 	public boolean equals(Object o) {
+		// Uses `instanceof` pattern matching.
 		if (o instanceof Machine other) {
-			// Uses `instanceof` pattern matching.
 			// The binding variable `other` can be used in this scope
 			// because the `instanceof` predicate evaluates to true in this block.
 			return Objects.equals(this.labels, other.labels)
