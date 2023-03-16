@@ -46,7 +46,7 @@ public class MovInstruction extends Instruction {
 		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
 
-    // My TODO: Add javadoc
+	// My TODO: Add javadoc
 	@Override
 	public String toString() {
 		return getLabelString() + getOpcode() + " " + result + " " + value;
