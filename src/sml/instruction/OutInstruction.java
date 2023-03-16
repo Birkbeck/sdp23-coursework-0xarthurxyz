@@ -19,7 +19,7 @@ public class OutInstruction extends Instruction {
 	 * 
 	 * @param label		optional name given to this instruction; label name can be used to jump to 
 	 * 					this instruction from other instructions.
-	 * @param source	name of the register whose value will be printed
+	 * @param source	name of the register whose value will be printed to the console
 	 */
 	public OutInstruction(String label, RegisterName source) {
 		super(label, OP_CODE);
