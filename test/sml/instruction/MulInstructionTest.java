@@ -29,6 +29,14 @@ class MulInstructionTest {
   }
 
   @Test
+  void givenInstruction_whenInstantiating_thenOpcodeCorrect() {
+    registers.set(EAX, 5);
+    registers.set(EBX, 6);
+    Instruction instruction = new MulInstruction(null, EAX, EBX);
+    Assertions.assertEquals(instruction.getOpcode(), "mul");
+  }
+
+  @Test
   void givenSimpleValues_whenMultiplying_thenResultIsCorrect() {
     registers.set(EAX, 5);
     registers.set(EBX, 6);
