@@ -131,4 +131,37 @@ class LabelsTest {
     // Checks labels print to console correctly
     Assertions.assertEquals("[f1 -> 0, f2 -> 1, f3 -> 2]", machine.getLabels().toString());
   }
+
+  @Test
+  void givenNullLabel_whenAddingLabel_thenThrowsNullPointerException() {
+    Assertions.assertThrows(NullPointerException.class, () -> {
+      machine.getLabels().addLabel(null, 10);
+    });
+  }
+
+  @Test
+  void givenDuplicateLabel_whenAddingLabel_thenThrowsException() {
+    Exception exception = Assertions.assertThrows(Exception.class, () -> {
+      // Adds duplicate label
+      machine.getLabels().addLabel("f1", 10);
+      machine.getLabels().addLabel("f1", 10);
+    });
+
+    String expectedMessage = "Label f1 already exist in this program. No duplicate labels allowed.";
+    String actualMessage = exception.getMessage();
+    Assertions.assertTrue(actualMessage.contains(expectedMessage));
+  }
+
+  @Test
+  void givenMissingLabel_whenGettingAddress_thenThrowsException() {
+    Exception exception = Assertions.assertThrows(Exception.class, () -> {
+      // Adds duplicate label
+      machine.getLabels().addLabel("f1", 10);
+      machine.getLabels().getAddress("f2");
+    });
+
+    String expectedMessage = "Label f2 does not exist in this program.";
+    String actualMessage = exception.getMessage();
+    Assertions.assertTrue(actualMessage.contains(expectedMessage));
+  }
 }
