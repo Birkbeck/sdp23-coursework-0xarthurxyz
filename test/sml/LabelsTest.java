@@ -6,10 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import sml.instruction.*;
-
-import static sml.Registers.Register.*;
-
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,7 +19,6 @@ class LabelsTest {
   // SML specific fields
   private Translator translator;
   private Machine machine;
-  private Registers registers;
 
   // File management specific fields
   private Path path;
@@ -90,7 +85,6 @@ class LabelsTest {
     // Sets up SML specific fields
     translator = new Translator(path.toString());
     machine = new Machine(new Registers());
-    registers = machine.getRegisters();
 
     // Captures the standard output for unit testing
     System.setOut(new PrintStream(output));
@@ -107,7 +101,6 @@ class LabelsTest {
     // Resets SML specific fields
     translator = null;
     machine = null;
-    registers = null;
 
     // Re-assigns the previously captured standard output stream after
     // each test completes to avoid conflicts across tests.
