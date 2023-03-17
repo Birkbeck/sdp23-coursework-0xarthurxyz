@@ -4,42 +4,80 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
-import static sml.Registers.Register.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
 
 class TranslatorTest {
-  // private String fileName = "test3.sml";
-  // private Translator translator;
-  // private Machine machine;
-  // private Registers registers;
+  private Translator translator;
+  private Machine machine;
+  Path path;
+  File file;
 
+  /**
+   * Temporary directory used to create a temporary "test.sml" file.
+   */
+  @TempDir
+  Path temporaryDirectory;
+
+  /**
+   * Creates a temporary directory and populates it with a temporary "test.sml" file.
+   * 
+   * <p> The directory and file are created and deleted after every test, including
+   * when tests fail or throw exceptions.
+   */
   @BeforeEach
   void setUp() {
-    // translator = new Translator(fileName);
-    // machine = new Machine(new Registers());
-    // registers = machine.getRegisters();
+    try {
+      // Creates temporary file path
+      path = temporaryDirectory.resolve("test.sml");
+    } catch (InvalidPathException ipe) {
+      System.err.println(
+          "error creating temporary test file in " +
+              this.getClass().getSimpleName());
+    }
+    // Creates temporary file
+    file = path.toFile();
+
+    // Creates translator and machine using temporary file
+    translator = new Translator(path.toString());
+    machine = new Machine(new Registers());
   }
 
   @AfterEach
   void tearDown() {
-    // translator = null;
-    // machine = null;
-    // registers = null;
+    path = null;
+    file = null;
+    translator = null;
+    machine = null;
   }
 
-  // My Todo: use temporary files here
   @Test
-  void givenFileName_whenTranslatingIntoInstructions_thenListLengthCorrect() {
-      Translator t = new Translator("test3.sml");
-			Machine m = new Machine(new Registers());
-      // Parses instructions from plaintext file
-      try {
-			t.readAndTranslate(m.getLabels(), m.getProgram());
-    } catch (Exception e) {
-      System.out.println("Error reading the program from " + "test3.sml");
+  public void givenFileWithOneInstruction_whenTranslating_thenListLengthIsOne() {
+    // Produces test instructions
+    try {
+      FileWriter fw1 = new FileWriter(file);
+      BufferedWriter bw1 = new BufferedWriter(fw1);
+      bw1.write("    mov EAX 6");
+      bw1.close();
+    } catch (IOException ioe) {
+      System.err.println(
+          "error creating temporary test file in " +
+              this.getClass().getSimpleName());
     }
-    // List<Instruction> `program` should be of length 1
-    // because there is only 1 instruction in the plaintext file.
-    Assertions.assertEquals(1, m.getProgram().size());
+
+    // Parses test instructions from temporary file
+    try {
+      translator.readAndTranslate(machine.getLabels(), machine.getProgram());
+    } catch (Exception e) {
+      System.out.println("Error reading the program from " + path.toString());
+    }
+
+    Assertions.assertEquals(1, machine.getProgram().size());
   }
 }
