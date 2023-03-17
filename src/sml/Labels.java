@@ -29,13 +29,20 @@ public final class Labels {
 
 	/**
 	 * Returns the address associated with the label.
+	 * 
+	 * <p> This method deals with non-existent labels by throwing an exception.
+	 * 
+	 * <p> If the specified label is null, then this method throws a
+	 * {@code NullPointerException} exception. This is required by the {@code get}
+	 * method interface defined in {@code Map<K, V>}, unless the map explicitly
+	 * permits null keys.
+	 * 
 	 *
 	 * @param label the label
 	 * @return the address the label refers to
+	 * @throws NullPointerException if the specified label is null
 	 */
 	public int getAddress(String label) {
-		// TODO: Where can NullPointerException be thrown here?
-		//       (Write an explanation.)
 		//       Add code to deal with non-existent labels.
 		return labels.get(label);
 	}
