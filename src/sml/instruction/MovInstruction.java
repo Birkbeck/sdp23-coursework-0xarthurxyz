@@ -54,13 +54,29 @@ public class MovInstruction extends Instruction {
 		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
 
-	// My TODO: Add javadoc
+	/**
+	 * Returns a formatted String representation of this object.
+	 * 
+	 * @return Nicely formatted String representation of the object.
+	 */
 	@Override
 	public String toString() {
 		return getLabelString() + getOpcode() + " " + result + " " + value;
 	}
 
-	// My TODO: Add javadoc
+	/**
+	 * Evaluates whether an object is equal to this one by comparing
+	 * the state and type of this object to that of the other object.
+	 * 
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they
+	 * are used to calculate unique hash codes for this class.
+	 * 
+	 * @param o the reference object to compare
+	 * @return {@code true} if the state and type of the objects is equal,
+	 *         {@code false} otherwise.
+	 */
 	@Override
 	public boolean equals(Object o) {
 		// Uses `instanceof` pattern matching.

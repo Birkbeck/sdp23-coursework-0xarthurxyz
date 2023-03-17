@@ -10,49 +10,66 @@ import sml.Registers.Register;
 /**
  * This class represents an out instruction given a register name.
  * 
- * <p> This class, both, defines all relevant methods and holds all relevant data
+ * <p>
+ * This class, both, defines all relevant methods and holds all relevant data
  * to prints the value of a register to the console.
  * 
  * @author Arthur Gousset
  */
 public class OutInstruction extends Instruction {
-  private final RegisterName source;
-  public static final String OP_CODE = "out";
+	private final RegisterName source;
+	public static final String OP_CODE = "out";
 
-  /**
+	/**
 	 * Constructor: Instantiates an out instruction given a register name.
 	 * 
-	 * @param label		optional name given to this instruction; label name can be used to jump to 
-	 * 					this instruction from other instructions.
-	 * @param source	name of the register whose value will be printed to the console
+	 * @param label  optional name given to this instruction; label name can be used
+	 *               to jump to
+	 *               this instruction from other instructions.
+	 * @param source name of the register whose value will be printed to the console
 	 */
 	public OutInstruction(String label, RegisterName source) {
 		super(label, OP_CODE);
 		this.source = source;
 	}
 
-  /** 
+	/**
 	 * Prints the value of a register to the console.
 	 * 
-	 * @param m	Machine object with a given set of registers
-	 * @return 	the new program counter (for jump instructions)
-	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
-	 * 			the instruction with the next address is to be executed
+	 * @param m Machine object with a given set of registers
+	 * @return the new program counter (for jump instructions)
+	 *         or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 *         the instruction with the next address is to be executed
 	 */
 	@Override
 	public int execute(Machine m) {
-    System.out.println( m.getRegisters().get(source) );
+		System.out.println(m.getRegisters().get(source));
 		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
 
-  // My TODO: Add javadoc
+	/**
+	 * Returns a formatted String representation of this object.
+	 * 
+	 * @return Nicely formatted String representation of the object.
+	 */
 	@Override
 	public String toString() {
 		return getLabelString() + getOpcode() + " " + source;
 	}
 
-	// My TODO: Add javadoc
-	// My TODO: Implement equals method
+	/**
+	 * Evaluates whether an object is equal to this one by comparing
+	 * the state and type of this object to that of the other object.
+	 * 
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they
+	 * are used to calculate unique hash codes for this class.
+	 * 
+	 * @param o the reference object to compare
+	 * @return {@code true} if the state and type of the objects is equal,
+	 *         {@code false} otherwise.
+	 */
 	@Override
 	public boolean equals(Object o) {
 		// Uses `instanceof` pattern matching.
@@ -63,14 +80,16 @@ public class OutInstruction extends Instruction {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Produces a unique hash code for every possible state of this object.
 	 * 
-	 * <p> The state of this object is defined by the fields of this object, which is why they 
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they
 	 * are used to calculate unique hash codes for this class.
 	 * 
-	 * @return	a unique hash code
+	 * @return a unique hash code
 	 */
 	@Override
 	public int hashCode() {

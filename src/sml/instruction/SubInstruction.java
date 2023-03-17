@@ -10,24 +10,29 @@ import sml.Registers.Register;
 /**
  * This class represents subtraction instruction given two register names.
  * 
- * <p> This class, both, defines all relevant methods and holds all relevant data
+ * <p>
+ * This class, both, defines all relevant methods and holds all relevant data
  * to perform the appropriate state transition on a machine.
  * 
  * @author Arthur Gousset
  */
 public class SubInstruction extends Instruction {
-  private final RegisterName result;
+	private final RegisterName result;
 	private final RegisterName source;
 	public static final String OP_CODE = "sub";
 
 	/**
 	 * Constructor: Instantiates a subtraction instruction given two register names.
 	 * 
-	 * @param label		optional name given to this instruction; label name can be used to jump to
-	 * 					this instruction from other instructions.
-	 * @param result	name of the register in which the result of the subtraction will be stored;
-	 * 					also name of the register whose value will be used in the subtraction.
-	 * @param source	name of the register whose value will be used in the subtraction.
+	 * @param label  optional name given to this instruction; label name can be used
+	 *               to jump to
+	 *               this instruction from other instructions.
+	 * @param result name of the register in which the result of the subtraction
+	 *               will be stored;
+	 *               also name of the register whose value will be used in the
+	 *               subtraction.
+	 * @param source name of the register whose value will be used in the
+	 *               subtraction.
 	 */
 	public SubInstruction(String label, RegisterName result, RegisterName source) {
 		super(label, OP_CODE);
@@ -35,16 +40,17 @@ public class SubInstruction extends Instruction {
 		this.source = source;
 	}
 
-	/** 
+	/**
 	 * Performs a state transition on a given machine.
 	 * 
-	 * <p> Subtracts the value of a register from the value of another register 
+	 * <p>
+	 * Subtracts the value of a register from the value of another register
 	 * and stores that result in a register.
 	 * 
-	 * @param m	Machine object with a given set of registers 
-	 * @return 	the new program counter (for jump instructions)
-	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
-	 * 			the instruction with the next address is to be executed
+	 * @param m Machine object with a given set of registers
+	 * @return the new program counter (for jump instructions)
+	 *         or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 *         the instruction with the next address is to be executed
 	 */
 	@Override
 	public int execute(Machine m) {
@@ -54,13 +60,29 @@ public class SubInstruction extends Instruction {
 		return NORMAL_PROGRAM_COUNTER_UPDATE;
 	}
 
-	// My TODO: Add javadoc
+	/**
+	 * Returns a formatted String representation of this object.
+	 * 
+	 * @return Nicely formatted String representation of the object.
+	 */
 	@Override
 	public String toString() {
 		return getLabelString() + getOpcode() + " " + result + " " + source;
 	}
 
-	// My TODO: Add javadoc
+	/**
+	 * Evaluates whether an object is equal to this one by comparing
+	 * the state and type of this object to that of the other object.
+	 * 
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they
+	 * are used to calculate unique hash codes for this class.
+	 * 
+	 * @param o the reference object to compare
+	 * @return {@code true} if the state and type of the objects is equal,
+	 *         {@code false} otherwise.
+	 */
 	@Override
 	public boolean equals(Object o) {
 		// Uses `instanceof` pattern matching.
@@ -72,14 +94,16 @@ public class SubInstruction extends Instruction {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Produces a unique hash code for every possible state of this object.
 	 * 
-	 * <p> The state of this object is defined by the fields of this object, which is why they 
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they
 	 * are used to calculate unique hash codes for this class.
 	 * 
-	 * @return	a unique hash code
+	 * @return a unique hash code
 	 */
 	@Override
 	public int hashCode() {
