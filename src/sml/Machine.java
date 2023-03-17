@@ -2,61 +2,11 @@ package sml;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static sml.Instruction.NORMAL_PROGRAM_COUNTER_UPDATE;
-
-enum supportedOpcodes implements OpcodeClassName {
-	add {
-		@Override
-		public String className() {
-			return "sml.instruction.AddInstruction";
-		}
-	},
-
-	sub {
-		@Override
-		public String className() {
-			return "sml.instruction.SubInstruction";
-		}
-	},
-
-	mul {
-		@Override
-		public String className() {
-			return "sml.instruction.MulInstruction";
-		}
-	},
-
-	div {
-		@Override
-		public String className() {
-			return "sml.instruction.DivInstruction";
-		}
-	},
-
-	mov {
-		@Override
-		public String className() {
-			return "sml.instruction.MovInstruction";
-		}
-	},
-
-	out {
-		@Override
-		public String className() {
-			return "sml.instruction.OutInstruction";
-		}
-	},
-
-	jnz {
-		@Override
-		public String className() {
-			return "sml.instruction.JnzInstruction";
-		}
-	}
-}
 
 /**
  * Represents the machine, the context in which programs run.
@@ -79,7 +29,8 @@ enum supportedOpcodes implements OpcodeClassName {
  */
 public final class Machine {
 	/**
-	 * This fields represents the set of labels that can be used to jump across instructions
+	 * This fields represents the set of labels that can be used to jump across
+	 * instructions
 	 * in the program.
 	 */
 	private final Labels labels = new Labels();
@@ -124,9 +75,14 @@ public final class Machine {
 		}
 	}
 
-	public static String getOpcodeClassName(supportedOpcodes op) {
-		return op.className();
-	}
+	static final Map<String, Class<?>> OPCODE_MAP = Map.of(
+			"add", sml.instruction.AddInstruction.class,
+			"sub", sml.instruction.SubInstruction.class,
+			"mul", sml.instruction.MulInstruction.class,
+			"div", sml.instruction.DivInstruction.class,
+			"mov", sml.instruction.MovInstruction.class,
+			"out", sml.instruction.OutInstruction.class,
+			"jnz", sml.instruction.JnzInstruction.class);
 
 	public Labels getLabels() {
 		return this.labels;
