@@ -4,8 +4,10 @@ import sml.instruction.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import static sml.Registers.Register;
@@ -208,16 +210,114 @@ public final class Translator {
         return new JnzInstruction(label, Register.valueOf(s), L);
       }
 
-      // TODO: Then, replace the switch by using the Reflection API
-
-      // TODO: Next, use dependency injection to allow this machine class
-      // to work with different sets of opcodes (different CPUs)
-
       default -> {
         System.out.println("Unknown instruction: " + opcode);
       }
     }
+    // TODO: Then, replace the switch by using the Reflection API
+
+    // gets className given opcode
+    // for abstract class Instruction, give me array of classes that extend Instruction
+    // within those return the one with OPCODE = opcode.
+    
+    // for (Class class : )
+
+    // String className;
+
+
+    // gets argumentList
+    // String[] argumentsList;
+
+    // int argumentLen = argumentsList.length;
+
+    // // Builds instruction
+    // try {
+    //   Object obj = builder( );
+
+    //   if (obj != null)
+    //       System.out.println(obj + " - " + obj.getClass());
+    //   else
+    //       System.out.println("Failed to create " + className);
+    // }
+    // catch (ClassNotFoundException e) {
+    //     e.getMessage();
+    // }
+
+    
+    // TODO: Next, use dependency injection to allow this machine class
+    // to work with different sets of opcodes (different CPUs)
     return null;
+  }
+
+  /**
+   * Creates an instance of the class described in param className should such a
+   * class exist. An appropriate constructor is chosen based on the number of
+   * elements in the array argumentsList and all elements are passed to the
+   * constructor as an appropriate type.
+   *
+   * @param className     fully qualified Java class name as a string
+   * @param argumentsList String array of arguments or an empty String array to
+   *                      pass to the class constructor
+   * @return instantiated Object of class type className or null if construction
+   *         is
+   *         not possible.
+   * @throws ClassNotFoundException className does not refer to a known Class
+   */
+  public static Object builder(String className, String[] argumentsList) throws ClassNotFoundException {
+    int argumentLen = argumentsList.length;
+    for (Constructor<?> candidateConstructor : Class.forName(className).getConstructors()) {
+      if (candidateConstructor.getParameterCount() == argumentLen) {
+        try {
+          Object[] parameterObjs = new Object[argumentLen];
+          // get the candidate constructor parameters
+          Class<?>[] paramCons = candidateConstructor.getParameterTypes();
+          for (int i = 0; i < argumentLen; i++) {
+            // attempt to type the parameters using any available string constructors
+            // NoSuchMethodException will be thrown where retyping isn't possible
+            Class<?> c = toWrapper(paramCons[i]);
+            parameterObjs[i] = c.getConstructor(String.class).newInstance(argumentsList[i]);
+          }
+          // return instance ob object using the successful constructor
+          // and parameters of the right class types.
+          return candidateConstructor.newInstance(parameterObjs);
+        } catch (NoSuchMethodException ignored) {
+        } catch (Exception e) {
+          e.getStackTrace();
+        }
+      }
+    }
+    return null;
+  }
+
+  // My TODO: Move to top because field not method
+  /**
+   * Map from primitive type to primitive type wrapper.
+   * 
+   * <p>
+   * Source: SDP Worksheet 4 solutions
+   */
+  private static final Map<Class<?>, Class<?>> PRIMITIVE_TYPE_WRAPPERS = Map.of(
+      int.class, Integer.class,
+      long.class, Long.class,
+      boolean.class, Boolean.class,
+      byte.class, Byte.class,
+      char.class, Character.class,
+      float.class, Float.class,
+      double.class, Double.class,
+      short.class, Short.class,
+      void.class, Void.class);
+
+  /**
+   * Return the correct Wrapper class if testClass is primitive
+   * 
+   * <p>
+   * Source: SDP Worksheet 4 solutions
+   *
+   * @param testClass class being tested
+   * @return Object class or testClass
+   */
+  private static Class<?> toWrapper(Class<?> testClass) {
+    return PRIMITIVE_TYPE_WRAPPERS.getOrDefault(testClass, testClass);
   }
 
   /**
