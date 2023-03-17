@@ -12,13 +12,15 @@ import java.util.Scanner;
 
 import static sml.Registers.Register;
 
-// My TODO: Complete class javadoc
 /**
- * This class ....
+ * This class defines all relevant methods and holds all relevant data
+ * to translate instructions from a plaintext file into internal form.
+ * 
  * <p>
- * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
+ * This class is used to parse instructions from a plaintext file and initiate a
+ * machine ready to execute the program.
  *
- * @author ...
+ * @author Arthur Gousset
  */
 public final class Translator {
   /**
@@ -31,9 +33,6 @@ public final class Translator {
    */
   private final String fileName; // source file of SML code
 
-  // My TODO: consider removing comment below
-  // line contains the characters in the current line that's not been processed
-  // yet
   /**
    * String representing the characters in the current line of the plaintext file
    * that have not be processed yet and will be processed next.
@@ -52,10 +51,6 @@ public final class Translator {
     this.fileName = fileName;
   }
 
-  // My TODO: Consider removing below comment
-  // translate the small program in the file into lab (the labels) and
-  // prog (the program)
-  // return "no errors were detected"
   /**
    * Translates every instruction from the plaintext file into the appropriate
    * internal form.
@@ -167,7 +162,6 @@ public final class Translator {
     String opcode = scan();
 
     // Creates new instruction
-
     switch (opcode) {
       case AddInstruction.OP_CODE -> {
         String r = scan();
@@ -217,13 +211,13 @@ public final class Translator {
     // TODO: Then, replace the switch by using the Reflection API
 
     // gets className given opcode
-    // for abstract class Instruction, give me array of classes that extend Instruction
+    // for abstract class Instruction, give me array of classes that extend
+    // Instruction
     // within those return the one with OPCODE = opcode.
-    
+
     // for (Class class : )
 
     // String className;
-
 
     // gets argumentList
     // String[] argumentsList;
@@ -232,18 +226,17 @@ public final class Translator {
 
     // // Builds instruction
     // try {
-    //   Object obj = builder( );
+    // Object obj = builder( );
 
-    //   if (obj != null)
-    //       System.out.println(obj + " - " + obj.getClass());
-    //   else
-    //       System.out.println("Failed to create " + className);
+    // if (obj != null)
+    // System.out.println(obj + " - " + obj.getClass());
+    // else
+    // System.out.println("Failed to create " + className);
     // }
     // catch (ClassNotFoundException e) {
-    //     e.getMessage();
+    // e.getMessage();
     // }
 
-    
     // TODO: Next, use dependency injection to allow this machine class
     // to work with different sets of opcodes (different CPUs)
     return null;
@@ -264,7 +257,10 @@ public final class Translator {
    * @throws ClassNotFoundException className does not refer to a known Class
    */
   public static Object builder(String className, String[] argumentsList) throws ClassNotFoundException {
+
     int argumentLen = argumentsList.length;
+    // Constructor<?> constructor = Class.forName(className).getConstructor();
+
     for (Constructor<?> candidateConstructor : Class.forName(className).getConstructors()) {
       if (candidateConstructor.getParameterCount() == argumentLen) {
         try {
