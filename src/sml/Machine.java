@@ -128,21 +128,14 @@ public final class Machine {
 		return op.className();
 	}
 
-	// My TODO: add javadoc
 	public Labels getLabels() {
 		return this.labels;
 	}
 
-	// My TODO: add javadoc
 	public List<Instruction> getProgram() {
 		return this.program;
 	}
 
-	/**
-	 * Gets the registers of this machine.
-	 * 
-	 * @return
-	 */
 	public Registers getRegisters() {
 		return this.registers;
 	}
