@@ -17,11 +17,8 @@ import sml.Registers.Register;
  * @author Arthur Gousset
  */
 public class MulInstruction extends Instruction {
-	// My TODO: Add javadoc
 	private final RegisterName result;
-	// My TODO: Add javadoc
 	private final RegisterName source;
-	// My TODO: Add javadoc
 	public static final String OP_CODE = "mul";
 
 	/**
