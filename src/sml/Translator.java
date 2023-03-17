@@ -141,8 +141,7 @@ public final class Translator {
         }
       }
     } catch (Exception e) {
-      // My TODO: Add better error handling than stack trace
-      e.printStackTrace();
+      System.out.println("Error transforming plaintext file into internal form.");
     }
   }
 
@@ -166,30 +165,94 @@ public final class Translator {
       case AddInstruction.OP_CODE -> {
         String r = scan();
         String s = scan();
-        return new AddInstruction(label, Register.valueOf(r), Register.valueOf(s));
+        // Uses Reflection API but couldn't work out way to remove switch statement
+        try {
+          Class<?> instructionImpl = Machine.OPCODE_MAP.get(opcode);
+          Class<?>[] parameterTypes = new Class[] {
+              String.class,
+              sml.RegisterName.class,
+              sml.RegisterName.class };
+          Constructor<?> constructor = instructionImpl.getConstructor(parameterTypes);
+          return (Instruction) constructor.newInstance(
+              label,
+              Register.valueOf(r),
+              Register.valueOf(s));
+        } catch (Exception e) {
+          System.out.println("Error constructing " + opcode + " instruction.");
+        }
       }
 
       case SubInstruction.OP_CODE -> {
         String r = scan();
         String s = scan();
-        return new SubInstruction(label, Register.valueOf(r), Register.valueOf(s));
+        // Uses Reflection API but couldn't work out way to remove switch statement
+        try {
+          Class<?> instructionImpl = Machine.OPCODE_MAP.get(opcode);
+          Class<?>[] parameterTypes = new Class[] {
+              String.class,
+              sml.RegisterName.class,
+              sml.RegisterName.class };
+          Constructor<?> constructor = instructionImpl.getConstructor(parameterTypes);
+          return (Instruction) constructor.newInstance(
+              label,
+              Register.valueOf(r),
+              Register.valueOf(s));
+        } catch (Exception e) {
+          System.out.println("Error constructing " + opcode + " instruction.");
+        }
       }
 
       case MulInstruction.OP_CODE -> {
         String r = scan();
         String s = scan();
-        return new MulInstruction(label, Register.valueOf(r), Register.valueOf(s));
+        // Uses Reflection API but couldn't work out way to remove switch statement
+        try {
+          Class<?> instructionImpl = Machine.OPCODE_MAP.get(opcode);
+          Class<?>[] parameterTypes = new Class[] {
+              String.class,
+              sml.RegisterName.class,
+              sml.RegisterName.class };
+          Constructor<?> constructor = instructionImpl.getConstructor(parameterTypes);
+          return (Instruction) constructor.newInstance(
+              label,
+              Register.valueOf(r),
+              Register.valueOf(s));
+        } catch (Exception e) {
+          System.out.println("Error constructing " + opcode + " instruction.");
+        }
       }
 
       case DivInstruction.OP_CODE -> {
         String r = scan();
         String s = scan();
-        return new DivInstruction(label, Register.valueOf(r), Register.valueOf(s));
+        // Uses Reflection API but couldn't work out way to remove switch statement
+        try {
+          Class<?> instructionImpl = Machine.OPCODE_MAP.get(opcode);
+          Class<?>[] parameterTypes = new Class[] {
+              String.class,
+              sml.RegisterName.class,
+              sml.RegisterName.class };
+          Constructor<?> constructor = instructionImpl.getConstructor(parameterTypes);
+          return (Instruction) constructor.newInstance(
+              label,
+              Register.valueOf(r),
+              Register.valueOf(s));
+        } catch (Exception e) {
+          System.out.println("Error constructing " + opcode + " instruction.");
+        }
       }
 
       case OutInstruction.OP_CODE -> {
         String s = scan();
-        return new OutInstruction(label, Register.valueOf(s));
+        // Uses Reflection API but couldn't work out way to remove switch statement
+        try {
+          Class<?> instructionImpl = Machine.OPCODE_MAP.get(opcode);
+          Class<?>[] parameterTypes = new Class[] { String.class, sml.RegisterName.class };
+          Constructor<?> constructor = instructionImpl.getConstructor(parameterTypes);
+          return (Instruction) constructor.newInstance(label, Register.valueOf(s));
+        } catch (Exception e) {
+          System.out.println("Error constructing " + opcode + " instruction.");
+        }
       }
 
       case MovInstruction.OP_CODE -> {
@@ -201,7 +264,18 @@ public final class Translator {
       case JnzInstruction.OP_CODE -> {
         String s = scan();
         String L = scan();
-        return new JnzInstruction(label, Register.valueOf(s), L);
+        // Uses Reflection API but couldn't work out way to remove switch statement
+        try {
+          Class<?> instructionImpl = Machine.OPCODE_MAP.get(opcode);
+          Class<?>[] parameterTypes = new Class[] {
+              String.class,
+              sml.RegisterName.class,
+              String.class };
+          Constructor<?> constructor = instructionImpl.getConstructor(parameterTypes);
+          return (Instruction) constructor.newInstance(label, Register.valueOf(s), L);
+        } catch (Exception e) {
+          System.out.println("Error constructing " + opcode + " instruction.");
+        }
       }
 
       default -> {
@@ -210,35 +284,13 @@ public final class Translator {
     }
     // TODO: Then, replace the switch by using the Reflection API
 
-    // gets className given opcode
-    // for abstract class Instruction, give me array of classes that extend
-    // Instruction
-    // within those return the one with OPCODE = opcode.
-
-    // for (Class class : )
-
-    // String className;
-
-    // gets argumentList
-    // String[] argumentsList;
-
-    // int argumentLen = argumentsList.length;
-
-    // // Builds instruction
-    // try {
-    // Object obj = builder( );
-
-    // if (obj != null)
-    // System.out.println(obj + " - " + obj.getClass());
-    // else
-    // System.out.println("Failed to create " + className);
-    // }
-    // catch (ClassNotFoundException e) {
-    // e.getMessage();
-    // }
+    // Was able to construct Instructions above using Relection API
+    // but was not able to completely remove the switch statement
+    // I started using the `builder` method below, but couldn't get it to work fully.
 
     // TODO: Next, use dependency injection to allow this machine class
     // to work with different sets of opcodes (different CPUs)
+
     return null;
   }
 
@@ -248,6 +300,9 @@ public final class Translator {
    * elements in the array argumentsList and all elements are passed to the
    * constructor as an appropriate type.
    *
+   * <p>
+   * Source: SDP Worksheet 4 solutions
+   * 
    * @param className     fully qualified Java class name as a string
    * @param argumentsList String array of arguments or an empty String array to
    *                      pass to the class constructor
@@ -285,7 +340,6 @@ public final class Translator {
     return null;
   }
 
-  // My TODO: Move to top because field not method
   /**
    * Map from primitive type to primitive type wrapper.
    * 
