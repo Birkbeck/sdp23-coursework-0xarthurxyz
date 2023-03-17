@@ -6,7 +6,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * This class manages optional labels that can be assigned to instructions in the program.
+ * This class manages optional labels that can be assigned to instructions in
+ * the program.
  * 
  * <p>
  * A label name can be used to jump to a specific instruction for execution
@@ -20,14 +21,14 @@ public final class Labels {
 	/**
 	 * Adds a label with the associated address to the map.
 	 *
-	 * @param label the label
+	 * @param label   the label
 	 * @param address the address the label refers to
 	 * @throws Exception if label already exists
 	 */
 	public void addLabel(String label, int address) throws Exception {
 		Objects.requireNonNull(label);
 		if (labels.containsKey(label)) {
-			throw new Exception("Label " + label + 
+			throw new Exception("Label " + label +
 					" already exist in this program. No duplicate labels allowed.");
 		}
 		labels.put(label, address);
@@ -36,9 +37,11 @@ public final class Labels {
 	/**
 	 * Returns the address associated with the label.
 	 * 
-	 * <p> This method deals with non-existent labels by throwing an exception.
+	 * <p>
+	 * This method deals with non-existent labels by throwing an exception.
 	 * 
-	 * <p> If the specified label is null, then this method throws a
+	 * <p>
+	 * If the specified label is null, then this method throws a
 	 * {@code NullPointerException} exception. This is required by the {@code get}
 	 * method interface defined in {@code Map<K, V>}, unless the map explicitly
 	 * permits null keys.
@@ -46,7 +49,7 @@ public final class Labels {
 	 *
 	 * @param label the label
 	 * @return the address the label refers to
-	 * @throws Exception if the label does not exist
+	 * @throws Exception            if the label does not exist
 	 * @throws NullPointerException if the specified label is null
 	 */
 	public int getAddress(String label) throws Exception {
@@ -73,12 +76,13 @@ public final class Labels {
 	/**
 	 * Compares the state and type of this object to that of another object.
 	 * 
-	 * <p> The state of this object is defined by the fields of this object, which is why they 
-	 * are used to calculate unique hash codes for this class.
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they are used to calculate unique hash codes for this class.
 	 * 
-	 * @param 	o 	an object to compare this object to.
-	 * @return			{@code true} if the state and type of the objects is equal,
-	 * 							{@code false} otherwise.
+	 * @param o an object to compare this object to.
+	 * @return {@code true} if the state and type of the objects is equal,
+	 *         {@code false} otherwise.
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -94,10 +98,11 @@ public final class Labels {
 	/**
 	 * Produces a unique hash code for every possible state of this object.
 	 * 
-	 * <p> The state of this object is defined by the fields of this object, which is why they 
-	 * are used to calculate unique hash codes for this class.
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they are used to calculate unique hash codes for this class.
 	 * 
-	 * @return	a unique hash code
+	 * @return a unique hash code
 	 */
 	@Override
 	public int hashCode() {
@@ -107,7 +112,8 @@ public final class Labels {
 	/**
 	 * Removes any existing labels
 	 * 
-	 * <p> The mapping will be empty after this method is called.
+	 * <p>
+	 * The mapping will be empty after this method is called.
 	 */
 	public void reset() {
 		labels.clear();
