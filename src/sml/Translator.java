@@ -284,7 +284,7 @@ public final class Translator {
     }
     // TODO: Then, replace the switch by using the Reflection API
 
-    // Was able to construct Instructions above using Relection API
+    // Was able to construct Instructions above using Reflection API
     // but was not able to completely remove the switch statement
     // I started using the `builder` method below, but couldn't get it to work fully.
 
