@@ -5,7 +5,7 @@ package sml;
 /**
  * Represents an abstract instruction.
  *
- * @author ...
+ * @author Arthur Gousset
  */
 public abstract class Instruction {
 	protected final String label;
@@ -28,17 +28,14 @@ public abstract class Instruction {
 		this.opcode = opcode;
 	}
 
-	// My todo: add javadoc
 	public String getLabel() {
 		return label;
 	}
 
-	// My todo: add javadoc
 	public String getOpcode() {
 		return opcode;
 	}
 
-	// My TODO: Add javadoc
 	protected String getLabelString() {
 		return (getLabel() == null) ? "" : getLabel() + ": ";
 	}
@@ -64,9 +61,6 @@ public abstract class Instruction {
 	 */
 	@Override
 	public abstract String toString();
-
-	// My TODO: Confirm this todo is implemented
-	// TODO: Make sure that subclasses also implement equals and hashCode (needed in class Machine).
 
 	/**
 	 * Evaluates whether some other object is "equal to" this one.
