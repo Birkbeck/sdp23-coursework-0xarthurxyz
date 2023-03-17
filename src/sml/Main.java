@@ -30,9 +30,26 @@ public class Main {
 
 			// My tests
 			System.out.println("Labels are:" + m.getLabels().toString() + ".");
+
+			// Enum print works
+			System.out.println(Machine.getOpcodeClassName(supportedOpcodes.add));
+
+			// Main.getEnumConstants();
+
+			// Class<> myClass = Main.class;
+			
+			// System.out.println(Arrays.toString(OpCodes.values()));
+			// System.out.println((OpCodes.values());
+
+			// for(OpCodes opcode : myClass.getEnumConstants()) {
+			// 	System.out.println(opcode.className());
+			// }
+
 		}
 		catch (IOException e) {
 			System.out.println("Error reading the program from " + args[0]);
 		}
 	}
 }
+
+
