@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 /**
  * This class manages optional labels that can be assigned to instructions in the program.
+ * 
+ * <p>
  * A label name can be used to jump to a specific instruction for execution
  * and allows the program to find the Instruction stored at a specific location.
  * 
