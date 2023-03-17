@@ -1,7 +1,6 @@
 package sml;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class Main {
 	/**
