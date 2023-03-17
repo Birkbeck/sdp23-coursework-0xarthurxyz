@@ -12,9 +12,6 @@ public abstract class Instruction {
 	protected final String opcode;
 	public static int NORMAL_PROGRAM_COUNTER_UPDATE = -1;
 
-	// My TODO: Consider using an ENUM for the operations `opcode` that are supported
-	
-
 	/**
 	 * Constructor: an instruction with a label and an opcode
 	 * (opcode must be an operation of the language)
