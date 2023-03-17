@@ -20,10 +20,14 @@ public final class Labels {
 	 *
 	 * @param label the label
 	 * @param address the address the label refers to
+	 * @throws Exception if label already exists
 	 */
-	public void addLabel(String label, int address) {
+	public void addLabel(String label, int address) throws Exception {
 		Objects.requireNonNull(label);
-		// TODO: Add a check that there are no label duplicates.
+		if (labels.containsKey(label)) {
+			throw new Exception("Label " + label + 
+					" already exist in this program. No duplicate labels allowed.");
+		}
 		labels.put(label, address);
 	}
 
@@ -40,7 +44,7 @@ public final class Labels {
 	 *
 	 * @param label the label
 	 * @return the address the label refers to
-	 * @throws Exception
+	 * @throws Exception if the label does not exist
 	 * @throws NullPointerException if the specified label is null
 	 */
 	public int getAddress(String label) throws Exception {

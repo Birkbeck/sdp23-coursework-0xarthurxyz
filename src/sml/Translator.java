@@ -120,8 +120,12 @@ public final class Translator {
                     //
                     // Note: A label is only mapped to if it is present and parsed correctly 
                     // (i.e. not `null`)
-                    if (label != null) {
-                        labels.addLabel(label, program.size());
+                    try {
+                        if (label != null) {
+                            labels.addLabel(label, program.size());
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
                     }
                     program.add(instruction);
                 }
