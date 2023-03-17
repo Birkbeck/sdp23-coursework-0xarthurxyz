@@ -7,14 +7,16 @@ import sml.Machine;
 import sml.RegisterName;
 import sml.Registers.Register;
 
-// TODO: write a JavaDoc for the class
 /**
- * @author
+ * This class represents an out instruction given a register name.
+ * 
+ * <p> This class, both, defines all relevant methods and holds all relevant data
+ * to prints the value of a register to the console.
+ * 
+ * @author Arthur Gousset
  */
 public class OutInstruction extends Instruction {
-  // My TODO: Add javadoc
   private final RegisterName source;
-  // My TODO: Add javadoc
   public static final String OP_CODE = "out";
 
   /**

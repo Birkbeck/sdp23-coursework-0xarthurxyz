@@ -7,25 +7,29 @@ import sml.Machine;
 import sml.RegisterName;
 import sml.Registers.Register;
 
-// TODO: write a JavaDoc for the class
 /**
- * @author
+ * This class represents a move instruction given a register name and an integer
+ * value.
+ * 
+ * <p>
+ * This class, both, defines all relevant methods and holds all relevant data
+ * to perform the appropriate state transition on a machine.
+ * 
+ * @author Arthur Gousset
  */
 public class MovInstruction extends Instruction {
-    // My TODO: Add javadoc
-    private final RegisterName result;
-    // My TODO: Add javadoc
+	private final RegisterName result;
 	private final int value;
-    // My TODO: Add javadoc
 	public static final String OP_CODE = "mov";
 
-  /**
-	 * Constructor: Instantiates a move instruction given a register name and an integer value.
+	/**
+	 * Constructor: Instantiates a move instruction given a register name and an
+	 * integer value.
 	 * 
-	 * @param label		optional name given to this instruction; label name can be used to jump to 
-	 * 					this instruction from other instructions.
-	 * @param result	name of the register in which the integer value will be stored
-	 * @param value 	integer value that  will be stored in the register
+	 * @param label  optional name given to this instruction; label name can be used
+	 *               to jump to this instruction from other instructions.
+	 * @param result name of the register in which the integer value will be stored
+	 * @param value  integer value that will be stored in the register
 	 */
 	public MovInstruction(String label, RegisterName result, int value) {
 		super(label, OP_CODE);
@@ -33,15 +37,16 @@ public class MovInstruction extends Instruction {
 		this.value = value;
 	}
 
-  /** 
+	/**
 	 * Performs a state transition on a given machine.
 	 * 
-	 * <p> Stores the value of an integer in a register.
+	 * <p>
+	 * Stores the value of an integer in a register.
 	 * 
-	 * @param m	Machine object with a given set of registers
-	 * @return 	the new program counter (for jump instructions)
-	 * 			or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
-	 * 			the instruction with the next address is to be executed
+	 * @param m Machine object with a given set of registers
+	 * @return the new program counter (for jump instructions)
+	 *         or NORMAL_PROGRAM_COUNTER_UPDATE to indicate that
+	 *         the instruction with the next address is to be executed
 	 */
 	@Override
 	public int execute(Machine m) {
@@ -56,7 +61,6 @@ public class MovInstruction extends Instruction {
 	}
 
 	// My TODO: Add javadoc
-	// My TODO: Implement equals method
 	@Override
 	public boolean equals(Object o) {
 		// Uses `instanceof` pattern matching.
@@ -68,14 +72,16 @@ public class MovInstruction extends Instruction {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Produces a unique hash code for every possible state of this object.
 	 * 
-	 * <p> The state of this object is defined by the fields of this object, which is why they 
+	 * <p>
+	 * The state of this object is defined by the fields of this object, which is
+	 * why they
 	 * are used to calculate unique hash codes for this class.
 	 * 
-	 * @return	a unique hash code
+	 * @return a unique hash code
 	 */
 	@Override
 	public int hashCode() {

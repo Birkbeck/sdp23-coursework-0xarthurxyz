@@ -7,10 +7,13 @@ import sml.Machine;
 import sml.RegisterName;
 import sml.Registers.Register;
 
-// TODO: write a JavaDoc for the class
-
 /**
- * @author
+ * This class represents multiplication instruction given two register names.
+ * 
+ * <p> This class, both, defines all relevant methods and holds all relevant data
+ * to perform the appropriate state transition on a machine.
+ * 
+ * @author Arthur Gousset
  */
 public class MulInstruction extends Instruction {
   // My TODO: Add javadoc

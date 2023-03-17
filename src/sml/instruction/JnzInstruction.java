@@ -7,21 +7,24 @@ import sml.Machine;
 import sml.RegisterName;
 import sml.Registers.Register;
 
-// TODO: write a JavaDoc for the class
 /**
- * @author
+ * This class represents a "jump if not zero" instruction given a register name
+ * and a label name to jump to.
+ * 
+ * <p>
+ * This class, both, defines all relevant methods and holds all relevant data
+ * to perform the appropriate state transition on a machine.
+ * 
+ * @author Arthur Gousset
  */
 public class JnzInstruction extends Instruction {
-	// My TODO: Add javadoc
 	private final RegisterName source;
-  // My TODO: Add javadoc
 	private final String destinationLabel;
-	// My TODO: Add javadoc
 	public static final String OP_CODE = "jnz";
 
   /**
 	 * Constructor: Instantiates a "jump if not zero" instruction given a register name
-   * and an label name to jump to.
+   * and a label name to jump to.
 	 * 
 	 * @param label		optional name given to this instruction; label name can be used to jump to 
 	 * 					this instruction from other instructions.
@@ -72,7 +75,6 @@ public class JnzInstruction extends Instruction {
 	}
 	
 	// My TODO: Add javadoc
-	// My TODO: Implement equals method
 	@Override
 	public boolean equals(Object o) {
 		// Uses `instanceof` pattern matching.
