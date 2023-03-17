@@ -40,10 +40,13 @@ public final class Labels {
 	 *
 	 * @param label the label
 	 * @return the address the label refers to
+	 * @throws Exception
 	 * @throws NullPointerException if the specified label is null
 	 */
-	public int getAddress(String label) {
-		//       Add code to deal with non-existent labels.
+	public int getAddress(String label) throws Exception {
+		if (!labels.containsKey(label)) {
+			throw new Exception("Label " + label + " does not exist in this program.");
+		}
 		return labels.get(label);
 	}
 

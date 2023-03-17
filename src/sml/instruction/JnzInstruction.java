@@ -47,13 +47,18 @@ public class JnzInstruction extends Instruction {
 	 */
 	@Override
 	public int execute(Machine m) {
-    // If the value stored at register `source` is not zero
-    // then execute the instruction labeled `destinationLabel` next.
-    if ( m.getRegisters().get(source) != 0 ) {
-      // Returns the index of the next instruction to execute in the 
-      // List<Instruction> `program` list.
-      return m.getLabels().getAddress(destinationLabel);
-    }
+		try {
+			// If the value stored at register `source` is not zero
+			// then execute the instruction labeled `destinationLabel` next.
+			if ( m.getRegisters().get(source) != 0 ) {
+				// Returns the index of the next instruction to execute in the 
+				// List<Instruction> `program` list.
+				return m.getLabels().getAddress(destinationLabel);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+    
 
     // If the value stored at register `source` is zero
     // then continue with the sequential execution of the program.
