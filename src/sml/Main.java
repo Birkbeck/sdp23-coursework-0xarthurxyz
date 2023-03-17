@@ -1,10 +1,7 @@
 package sml;
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.util.Map;
-
-import static sml.Registers.Register.*;
 
 public class Main {
 	/**
@@ -35,45 +32,73 @@ public class Main {
 			// My tests
 			System.out.println("Labels are:" + m.getLabels().toString() + ".");
 
-			// Enum print works
-			System.out.println(Machine.getOpcodeClassName(supportedOpcodes.add));
-			try {
-				// Creates AddInstruction Class
-				Class<?> add = Class.forName(Machine.getOpcodeClassName(supportedOpcodes.add));
-				// Prints class name
-				System.out.println(add.getSimpleName());
 
-				// sets registers.
-				m.getRegisters().set(EAX, 5);
-				m.getRegisters().set(EBX, 6);
+				//
+				// WORKING SOLUTION
+				// 
+
+				// Class<?> opcodeImpl = Class.forName(opcodeClassName);
+
+				// Class<?> opcodeImpl = sml.instruction.AddInstruction.class;
+
+				// Class<?>[] parameterTypes = new Class[]{ String.class, sml.RegisterName.class, sml.RegisterName.class };
+
+				// Constructor<?> constructor = instructionImpl.getConstructor(parameterTypes);
+
+        // Instruction ins = (Instruction)constructor.newInstance(null, EAX, EBX);
+
+				// System.out.println(ins.toString());
+
+				// Add, Sub, Mul, Div
+				// Class<?>[] parameterTypes = new Class[]{ String.class, sml.RegisterName.class, sml.RegisterName.class };
+
+				// Out
+				// Class<?>[] parameterTypes = new Class[]{ sml.RegisterName.class };
+
+				// Jnz
+				// Class<?>[] parameterTypes = new Class[]{ sml.RegisterName.class, String.class };
+
+				// Mov
+				// Class<?>[] parameterTypes = new Class[]{ Integer.class, sml.RegisterName.class };
+
+
+				//
+				// LONG SOLUTION
+				//
 
 				// int argumentLen = 2;
 				// String[] argumentsList = { "f3", "EAX", "EBX" };
 
-				Class<?> addIns = Class.forName(Machine.getOpcodeClassName(supportedOpcodes.add));
-				// AddInstruction(String label, RegisterName result, RegisterName source)
-				Constructor<?> constructor = addIns.getConstructor(new Class[]{ String.class, sml.RegisterName.class, sml.RegisterName.class });
-        Instruction ins = (Instruction)constructor.newInstance("f3", EAX, EBX);
-				System.out.println(ins.toString());
+				// String className = Machine.getOpcodeClassName(supportedOpcodes.add);
 
-				// for (Constructor<?> candidateConstructor : Class.forName(
-				// 		Machine.getOpcodeClassName(supportedOpcodes.add)).getConstructors()) {
+				// for (Constructor<?> candidateConstructor : Class.forName(className).getConstructors()) {
+
 				// 	if (candidateConstructor.getParameterCount() == argumentLen) {
+
 				// 		try {
 				// 			Object[] parameterObjs = new Object[argumentLen];
+
 				// 			// get the candidate constructor parameters
 				// 			Class<?>[] paramCons = candidateConstructor.getParameterTypes();
+
 				// 			System.out.println("here 1");
+
 				// 			for (int i = 0; i < argumentLen; i++) {
+
 				// 				System.out.println("here 2");
+								
 				// 				// attempt to type the parameters using any available string constructors
 				// 				// NoSuchMethodException will be thrown where retyping isn't possible
 				// 				Class<?> c = toWrapper(paramCons[i]);
+
 				// 				parameterObjs[i] = c.getConstructor(String.class).newInstance(argumentsList[i]);
+
 				// 			}
 				// 			// return instance ob object using the successful constructor
 				// 			// and parameters of the right class types.
+
 				// 			Object obj = candidateConstructor.newInstance(parameterObjs);
+
 				// 		} catch (NoSuchMethodException ignored) {
 				// 			System.out.println("NoSuchMethodException");
 				// 		} catch (Exception e) {
@@ -103,9 +128,9 @@ public class Main {
 				// Instantiate AddInstruction
 				// Object obj = add.getConstructor().newInstance(argumentsList);
 				// System.out.println(obj.toString());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			// } catch (Exception e) {
+			// 	e.printStackTrace();
+			// }
 
 			// Main.getEnumConstants();
 
@@ -127,6 +152,7 @@ public class Main {
 		return PRIMITIVE_TYPE_WRAPPERS.getOrDefault(testClass, testClass);
 	}
 
+	
 	private static final Map<Class<?>, Class<?>> PRIMITIVE_TYPE_WRAPPERS = Map.of(
 			int.class, Integer.class,
 			long.class, Long.class,
