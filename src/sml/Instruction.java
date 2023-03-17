@@ -1,9 +1,9 @@
 package sml;
 
-// TODO: write a JavaDoc for the class
-
 /**
- * Represents an abstract instruction.
+ * This abstract class defines the fields and methods 
+ * that every specific instruction type (e.g. add, sub, mul, div, mov, out, jnz)
+ * has to implement.
  *
  * @author Arthur Gousset
  */
