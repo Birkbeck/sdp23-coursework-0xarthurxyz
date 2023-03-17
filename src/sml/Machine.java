@@ -7,6 +7,58 @@ import java.util.stream.Collectors;
 
 import static sml.Instruction.NORMAL_PROGRAM_COUNTER_UPDATE;
 
+
+enum supportedOpcodes implements OpcodeClassName {
+  add {
+    @Override
+    public String className() {
+      return "AddInstruction";
+    }
+  }, 
+
+  sub {
+    @Override
+    public String className() {
+      return "SubInstruction";
+    }
+  }, 
+  
+  mul {
+    @Override
+    public String className() {
+      return "MulInstruction";
+    }
+  },
+  
+  div {
+    @Override
+    public String className() {
+      return "DivInstruction";
+    }
+  },
+
+  mov {
+    @Override
+    public String className() {
+      return "MovInstruction";
+    }
+  },
+
+  out {
+    @Override
+    public String className() {
+      return "OutInstruction";
+    }
+  },
+  
+  jnz {
+    @Override
+    public String className() {
+      return "JnzInstruction";
+    }
+  }
+}
+
 /**
  * Represents the machine, the context in which programs run.
  * 
@@ -47,6 +99,10 @@ public final class Machine {
 		}
 	}
 
+	public static String getOpcodeClassName(supportedOpcodes op) {
+  	return op.className();
+  }
+
 	// My TODO: add javadoc
 	public Labels getLabels() {
 		return this.labels;
@@ -61,7 +117,6 @@ public final class Machine {
 	public Registers getRegisters() {
 		return this.registers;
 	}
-
 
 	/**
 	 * String representation of the program under execution.
