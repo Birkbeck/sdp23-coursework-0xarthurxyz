@@ -214,7 +214,7 @@ public final class Translator {
      * Parses the characters representing the label in the current instruction that 
      * is being translated.
      * 
-     * @return  characters representing the label, if 
+     * @return  characters representing the label, if present
      */
     private String getLabel() {
         // Parses next word from the remaining characters in the current line
