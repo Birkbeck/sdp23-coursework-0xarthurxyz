@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import sml.instruction.MovInstruction;
+import sml.instruction.*;
 
 import static sml.Registers.Register.*;
 
@@ -89,14 +89,14 @@ class TranslatorTest {
   }
 
   @Test
-  public void givenFileWithTwoInstructions_whenTranslating_thenListLengthIsTwo() {
+  public void givenFileWithTwoInstructions_whenTranslating_thenCorrect() {
     // Writes test instructions to test file
     try {
       bufferedWriter.write("    mov EAX 6" + "\n");
       bufferedWriter.write("    mov EBX 5" + "\n");
       bufferedWriter.close();
     } catch (IOException ioe) {
-      System.err.println( "Error creating file: " + this.getClass().getSimpleName());
+      System.err.println("Error creating file: " + this.getClass().getSimpleName());
     }
 
     // Parses test instructions from test file
@@ -112,15 +112,80 @@ class TranslatorTest {
     Assertions.assertEquals(2, machine.getProgram().size());
 
     // Checks 1st instruction is "mov EAX 6"
-    Assertions.assertEquals( 
+    Assertions.assertEquals(
         machine.getProgram().get(0),
         new MovInstruction(null, EAX, 6));
     Assertions.assertEquals(6, registers.get(EAX));
-    
+
     // Checks 2nd instruction is "mov EBX 5"
-    Assertions.assertEquals( 
+    Assertions.assertEquals(
         machine.getProgram().get(1),
         new MovInstruction(null, EBX, 5));
     Assertions.assertEquals(5, registers.get(EBX));
+  }
+
+  @Test
+  public void givenFileWithManyInstructions_whenTranslating_thenCorrect() {
+    // Writes test instructions to test file
+    try {
+      bufferedWriter.write("    mov EAX 6" + "\n");
+      bufferedWriter.write("    mov EBX 1" + "\n");
+      bufferedWriter.write("    mov ECX 1" + "\n");
+      bufferedWriter.write("f3: mul EBX EAX" + "\n");
+      bufferedWriter.write("    sub EAX ECX" + "\n");
+      bufferedWriter.write("    jnz EAX f3" + "\n");
+      bufferedWriter.write("    out EBX" + "\n");
+      bufferedWriter.close();
+    } catch (IOException ioe) {
+      System.err.println("Error creating file: " + this.getClass().getSimpleName());
     }
+
+    // Parses test instructions from test file
+    try {
+      translator.readAndTranslate(machine.getLabels(), machine.getProgram());
+    } catch (Exception e) {
+      System.out.println("Error reading the program from " + path.toString());
+    }
+    // Executes instructions
+    machine.execute();
+
+    // Checks 1st instruction is "mov EAX 6"
+    Assertions.assertEquals(
+        machine.getProgram().get(0),
+        new MovInstruction(null, EAX, 6));
+
+    // Checks 2nd instruction is "mov EBX 1"
+    Assertions.assertEquals(
+        machine.getProgram().get(1),
+        new MovInstruction(null, EBX, 1));
+
+    // Checks 3rd instruction is "mov ECX 1"
+    Assertions.assertEquals(
+        machine.getProgram().get(2),
+        new MovInstruction(null, ECX, 1));
+
+    // Checks 4th instruction is "f3: mul EBX EAX"
+    Assertions.assertEquals(
+        machine.getProgram().get(3),
+        new MulInstruction("f3", EBX, EAX));
+
+    // Checks 5th instruction is "sub EAX ECX"
+    Assertions.assertEquals(
+        machine.getProgram().get(4),
+        new SubInstruction(null, EAX, ECX));
+
+    // Checks 6th instruction is "jnz EAX f3"
+    Assertions.assertEquals(
+        machine.getProgram().get(5),
+        new JnzInstruction(null, EAX, "f3"));
+
+    // Checks 7th instruction is "out EBX"
+    Assertions.assertEquals(
+        machine.getProgram().get(6),
+        new OutInstruction(null, EBX));
+
+    // Checks registers are correct after execution
+    Assertions.assertEquals(720, registers.get(EBX));
+    Assertions.assertEquals(0, registers.get(EAX));
+  }
 }
