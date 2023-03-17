@@ -30,9 +30,11 @@ class TranslatorTest {
   Path temporaryDirectory;
 
   /**
-   * Creates a temporary directory and populates it with a temporary "test.sml" file.
+   * Creates a temporary directory and populates it with a temporary "test.sml"
+   * file.
    * 
-   * <p> The directory and file are created and deleted after every test, including
+   * <p>
+   * The directory and file are created and deleted after every test, including
    * when tests fail or throw exceptions.
    */
   @BeforeEach
@@ -79,9 +81,9 @@ class TranslatorTest {
 
   @Test
   public void givenFileWithOneInstruction_whenTranslating_thenListLengthIsOne() {
-   
+
     try {
-       // Writes test instructions to test file
+      // Writes test instructions to test file
       bufferedWriter.write("    mov EAX 6" + "\n");
       bufferedWriter.write("    mov EBX 5" + "\n");
 
