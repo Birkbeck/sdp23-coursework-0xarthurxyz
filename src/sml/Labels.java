@@ -4,37 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-// TODO: write a JavaDoc for the class
-
-/* 
- * a mapping from labels to index locations ({@code Map<String, Integer>})
- * 
- * * creates a mapping from the {@code String} {@code label} to the 
-     * appropriate index in the {@code List<Instruction>} {@code program} list.
- */
-
 /**
- * This class manages String labels assigned to specific instructions
- * 
- * <p> Specifically, this class maintains a mapp
+ * This class manages optional labels that can be assigned to instructions in the program.
+ * A label name can be used to jump to a specific instruction for execution
+ * and allows the program to find the Instruction stored at a specific location.
  * 
  * @author Arthur Gousset
  */
 public final class Labels {
 	private final Map<String, Integer> labels = new HashMap<>();
-
-	// Saves the label to internal form.
-	// 
-	// 
-	// 
-	// This allows the program to find the Instruction stored at a specific 
-	// location.
-	// 
-	// If the map previously contained the key String `label`, 
-	// the old mapping is replaced by the new value.
-	//
-	// Note: A label is only mapped to if it is present and parsed correctly 
-	// (i.e. not `null`)
 
 	/**
 	 * Adds a label with the associated address to the map.
@@ -62,10 +40,10 @@ public final class Labels {
 	}
 
 	/**
-	 * representation of this instance,
+	 * A representation of this instance,
 	 * in the form "[label -> address, label -> address, ..., label -> address]"
 	 *
-	 * @return the string representation of the labels map
+	 * @return string representation of the labels map
 	 */
 	@Override
 	public String toString() {
