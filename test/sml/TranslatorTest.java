@@ -16,8 +16,12 @@ import java.nio.file.Path;
 class TranslatorTest {
   private Translator translator;
   private Machine machine;
+
   Path path;
   File file;
+
+  FileWriter fileWriter;
+  BufferedWriter bufferedWriter;
 
   /**
    * Temporary directory used to create a temporary "test.sml" file.
@@ -44,6 +48,17 @@ class TranslatorTest {
     // Creates temporary file
     file = path.toFile();
 
+    try {
+      // Starts writing test instructions
+      fileWriter = new FileWriter(file);
+      bufferedWriter = new BufferedWriter(fileWriter);
+      // Actual test instructions are written in each unit test below
+    } catch (IOException ioe) {
+      System.err.println(
+          "error creating temporary test file in " +
+              this.getClass().getSimpleName());
+    }
+
     // Creates translator and machine using temporary file
     translator = new Translator(path.toString());
     machine = new Machine(new Registers());
@@ -51,20 +66,27 @@ class TranslatorTest {
 
   @AfterEach
   void tearDown() {
+    // Reset file management fields
     path = null;
     file = null;
+    fileWriter = null;
+    bufferedWriter = null;
+
+    // Reset SML specific fields
     translator = null;
     machine = null;
   }
 
   @Test
   public void givenFileWithOneInstruction_whenTranslating_thenListLengthIsOne() {
-    // Produces test instructions
+   
     try {
-      FileWriter fw1 = new FileWriter(file);
-      BufferedWriter bw1 = new BufferedWriter(fw1);
-      bw1.write("    mov EAX 6");
-      bw1.close();
+       // Writes test instructions to test file
+      bufferedWriter.write("    mov EAX 6" + "\n");
+      bufferedWriter.write("    mov EBX 5" + "\n");
+
+      // Finishes writing test instructions
+      bufferedWriter.close();
     } catch (IOException ioe) {
       System.err.println(
           "error creating temporary test file in " +
@@ -78,6 +100,6 @@ class TranslatorTest {
       System.out.println("Error reading the program from " + path.toString());
     }
 
-    Assertions.assertEquals(1, machine.getProgram().size());
+    Assertions.assertEquals(2, machine.getProgram().size());
   }
 }
