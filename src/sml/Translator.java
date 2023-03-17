@@ -157,44 +157,35 @@ public final class Translator {
                 return new AddInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
 
-            // TODO: add code for all other types of instructions
-
-            // My TODO: SubInstruction
             case SubInstruction.OP_CODE -> {
                 String r = scan();
                 String s = scan();
                 return new SubInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
 
-            // My TODO: MulInstruction
             case MulInstruction.OP_CODE -> {
                 String r = scan();
                 String s = scan();
                 return new MulInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
 
-            // My TODO: DivInstruction
             case DivInstruction.OP_CODE -> {
                 String r = scan();
                 String s = scan();
                 return new DivInstruction(label, Register.valueOf(r), Register.valueOf(s));
             }
 
-            // My TODO: OutInstruction
             case OutInstruction.OP_CODE -> {
                 String s = scan();
                 return new OutInstruction(label, Register.valueOf(s));
             }
 
-            // My TODO: MovInstruction
-            // My TODO: Test this parses the `int` value correctly
             case MovInstruction.OP_CODE -> {
                 String r = scan();
                 int value = Integer.parseInt( scan() );
                 return new MovInstruction(label, Register.valueOf(r), value);
             }
 
-            // My TODO: JnzInstruction
             case JnzInstruction.OP_CODE -> {
               String s = scan();
               String L = scan();
